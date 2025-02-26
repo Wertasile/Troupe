@@ -51,7 +51,60 @@ server.js
 ├── server.js
 
 ```
+### CONFIGURATION FILES (config)
 
+There are two files for configure, db.js to setup the database connection and generateToken.js which is called upon later within our Controller for when a user signs in.
+
+#### DATABASE CONFIGURATION FILE (db.js)
+
+####
+
+### MODELS 
+
+These consists of files where we declare the structure of frequently used data structure i.e. Users, Messages and Chats.
+(Only users is shown below as Users has special function which use bcrypt, Messages and Chats have their Schema declared as normal)
+
+- userModel.js
+```
+//import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+```
+
+```
+const usermodel = mongoose.Schema({
+    username: {type:String, required:true},
+    email: {type:String, required:true, unique:true},
+    password: {type:String, required:true},
+}, {
+    timestamps:true
+})
+
+```
+
+```
+usermodel.methods.matchPassword = async function (passwordEntered) {
+    return await bycrypt.compare(passwordEntered, this.password)
+}
+```
+
+```
+usermodel.pre( "save", async function (next) {
+
+    if (!this.isModified){
+        next() //if this instance of this object is not modified next skips the enxt few lines within this pre save function
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(this.password, salt)
+})
+```
+
+```
+const User = mongoose.model("User", usermodel);
+
+module.exports = User;
+```
 ## FRONTEND
 
 STRUCTURE

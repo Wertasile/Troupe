@@ -64,13 +64,20 @@ There are two files for configure, db.js to setup the database connection and ge
 These consists of files where we declare the structure of frequently used data structure i.e. Users, Messages and Chats.
 (Only users is shown below as Users has special function which use bcrypt, Messages and Chats have their Schema declared as normal)
 
-- userModel.js
+#### userModel.js
+
+In this File, moongoose is used to declare the Schema of the User. Bcrypt is used to perform two things
+1. Ensure Passwords are comapred before user signs in.
+2. Ensure that befire a usermodel is saved, (when a new user is created, or user details are changed)
+
+First mongoose and bcryot libraries are declared so that they can be used
 ```
 //import mongoose from 'mongoose';
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 ```
 
+Mongoose Library Object's constructor method Schema is used to build an instance (object) of user Model.
 ```
 const usermodel = mongoose.Schema({
     username: {type:String, required:true},
@@ -79,14 +86,15 @@ const usermodel = mongoose.Schema({
 }, {
     timestamps:true
 })
-
 ```
 
+bycrypt library's method, compare is used to compare the password that the user entered and the hashed password that is stored in our database.
 ```
 usermodel.methods.matchPassword = async function (passwordEntered) {
     return await bycrypt.compare(passwordEntered, this.password)
 }
 ```
+
 
 ```
 usermodel.pre( "save", async function (next) {

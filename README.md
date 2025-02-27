@@ -60,9 +60,9 @@ There are two files for configure, db.js to setup the database connection and ge
 #### GENERATING JWT TOKEN (generateToken.js)
 This contains the code which generates a token upon user sign on. This token is cross checked whenever an action takes place for authentication purposes.
 jsonwebtoken library is imported, and it contains the functions to generate a unique token for a user. The user's id (username/email) is taken in the sign method is used with the arguements
-{ id } → The payload (data stored inside the token). This includes the user’s ID.
-process.env.JWT_SECRET → The secret key used to sign the token. It should be stored securely in the .env file to prevent exposure.
-{ expiresIn: "30d" } → The token will expire in 30 days, meaning the user will need to log in again after that time.
+- { id } → The payload (data stored inside the token). This includes the user’s ID.
+- process.env.JWT_SECRET → The secret key used to sign the token. It should be stored securely in the .env file to prevent exposure.
+- { expiresIn: "30d" } → The token will expire in 30 days, meaning the user will need to log in again after that time.
 
 ```
 const jsonwebtoken = require('jsonwebtoken');

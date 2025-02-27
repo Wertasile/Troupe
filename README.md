@@ -167,7 +167,50 @@ module.exports = User;
 Middleware consists of a single file, which is used to ensure that only authorised users can perform chats and other operations and 'protects the API routes which are the gateway to perform functions on our MongoDB database'.
 
 #### AUTHENTICATION MIDDLEWARE (authMiddleware.js)
-...
+
+1) Firstly we import the required modules
+```
+const jwt = require('jsonwebtoken');
+const User = require('../Models/UserModel')
+const asyncHandler = require('express-async-handler');
+require('dotenv').config();
+```
+
+2) We create a function called protect, which is called upon to enable authorisation of users
+
+
+3) Within the function, we first check if the request that we received, has an authorization header and if the authorization header is a Bearer token
+   Responses containing Authorization Headers are of the format:
+   Authorization : Bearer <Token>
+   Therefore we check that the Authorization Header starts with Bearer, to ensure we are only accepting bearer tokens.
+   If Bearer Token exists we split the Authorization Header token and extract the token
+
+4) jwt library's verify is then used to decode the token, which points to a user Id. (A dictionary is returned with Id in it into the decoded constant)
+
+5) We then use mongoose method 'findByID' on the User model to find the relevant user details via the Id we just decoded, we get all details except the password and add it to the request.
+```
+const protect = asyncHandler( async (request,response, next) => {
+    let token;
+
+    if (request.headers.authorization && request.headers.authorization.startsWith("Bearer")){
+        try{
+            token = request.headers.authorization.split("")[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            req.user = await User.findById(decoded.id).select("-password")
+            next();
+            
+        } catch(err) {
+            response.status(401);
+            throw new Error("wrong token")
+        }
+
+    }
+        if (!token){
+        response.status(401);
+        throw new Error("No Authorization Token there, hence authorization failed")
+    }
+});
+```
 
 ### ROUTES
 

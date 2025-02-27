@@ -58,6 +58,33 @@ There are two files for configure, db.js to setup the database connection and ge
 #### 1) DATABASE CONFIGURATION FILE (db.js)
 This file consists of the relevant code, to connect our application to the mongoDB database.
 
+Mongoose is the ODM(Object Data Modelling) Library which enables us to interact with MongoDB database. Our Environment variable declared in .dotenv file are also loaded into process.env here
+```
+const mongoose = require('mongoose');
+require('dotenv').config()
+```
+
+strictQuery ensures only properties(fields) decalred in schemas can be manipulated and are allowed in queries.
+The function connecttodatabase uses the connect function using the MONGODB_URI, which is the connection string environment variable.
+
+```
+mongoose.set("strictQuery", true, "NewUrlParser", true);
+
+const connecttodatabase = async () => {
+    try{
+        await mongoose.connect(process.env.MONGODB_URI, {});
+        console.log("Successfully connected to MongoDB database")
+    } catch (err) {
+        console.error(err.message)
+        console.log(process.env.MONGODB_URI)
+        process.exit(1)
+    }
+    
+}
+
+module.exports = connecttodatabase;
+```
+
 #### 2) GENERATING JWT TOKEN (generateToken.js)
 This contains the code which generates a token upon user sign on. This token is cross checked whenever an action takes place for authentication purposes.
 jsonwebtoken library is imported, and it contains the functions to generate a unique token for a user. The user's id (username/email) is taken in the sign method is used with the arguements

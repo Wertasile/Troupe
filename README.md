@@ -214,6 +214,29 @@ const protect = asyncHandler( async (request,response, next) => {
 
 ### ROUTES
 
+To perform the relevant function to influence the backend, we need to define an API route that can be called upon, and based on the request type, headers and body, the required function will be performed.
+
+1) For the users we would need to be able to
+- add users i.e., signup
+- login users and authorise
+- and get all users, this is relevant if we want to search for a particular user to start a new chat with
+
+2) For the chats itself, we need to be able to
+- get a chat, so that we can load it in
+- start a new chat with a user, so add chat
+   We also need the below features for group chats
+- Creating a new group
+- Adding member to the group
+- Removing members from the group
+- And Renaming the Group
+
+3) For the messages itself, we need to be able to
+- Load the relevant messages of the chat
+- Add a message to the chat
+
+We would need to use express libarary's Router method to initialise router, and defining the relevant routes.
+The protect middleware is also used, so only authorised users can access the route and make the relevant calls
+
 ### CONTROLLERS
 
 

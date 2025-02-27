@@ -55,9 +55,10 @@ server.js
 
 There are two files for configure, db.js to setup the database connection and generateToken.js which is called upon later within our Controller for when a user signs in.
 
-#### DATABASE CONFIGURATION FILE (db.js)
+#### 1) DATABASE CONFIGURATION FILE (db.js)
+This file consists of the relevant code, to connect our application to the mongoDB database.
 
-#### GENERATING JWT TOKEN (generateToken.js)
+#### 2) GENERATING JWT TOKEN (generateToken.js)
 This contains the code which generates a token upon user sign on. This token is cross checked whenever an action takes place for authentication purposes.
 jsonwebtoken library is imported, and it contains the functions to generate a unique token for a user. The user's id (username/email) is taken in the sign method is used with the arguements
 - { id } → The payload (data stored inside the token). This includes the user’s ID.
@@ -82,7 +83,7 @@ module.exports = generateToken
 These consists of files where we declare the structure of frequently used data structure i.e. Users, Messages and Chats.
 (Only users is shown below as Users has special function which use bcrypt, Messages and Chats have their Schema declared as normal)
 
-#### userModel.js
+#### 1) userModel.js
 
 In this File, moongoose is used to declare the Schema of the User. Bcrypt is used to perform two things
 1. Ensure Passwords are comapred before user signs in.

@@ -141,7 +141,10 @@ usermodel.methods.matchPassword = async function (passwordEntered) {
 }
 ```
 
-
+Below is a pre-save middleware function that runs before a user is saved to the database. This runs before a new user is added (or) if a user's details are updated.
+First we check if the current instance/ object has been modified, if not next() is run which skips the rest of the code.
+If it has been modified, the password is hashed.
+genSalt(10) describes complexity of hashing, the salt is then used to hash password, and then the hashed password is saved in the Database.
 ```
 usermodel.pre( "save", async function (next) {
 
@@ -153,12 +156,24 @@ usermodel.pre( "save", async function (next) {
     this.password = await bcrypt.hash(this.password, salt)
 })
 ```
-
+A model for the User is then generated based on the schema we previously declared. A scheme (usermodel here), needs to be converted to a Model so that we can interact with the MongoDB collection the data is in. Model is then exported so then it can be used in other parts of the application.
 ```
 const User = mongoose.model("User", usermodel);
 
 module.exports = User;
 ```
+
+### MIDDLEWARE
+Middleware consists of a single file, which is used to ensure that only authorised users can perform chats and other operations and 'protects the API routes which are the gateway to perform functions on our MongoDB database'.
+
+#### AUTHENTICATION MIDDLEWARE (authMiddleware.js)
+...
+
+### ROUTES
+
+### CONTROLLERS
+
+
 ## FRONTEND
 
 STRUCTURE

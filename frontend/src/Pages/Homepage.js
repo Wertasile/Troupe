@@ -19,13 +19,13 @@ const Homepage = () => {
     return (
         <Container maxW="xl" centerContent>
 
-            <Box d="flex" justifyContent="center" p={3} bg={"white"} w="100%" m="40px 0 15px 0" borderRadius="lg" borderWidth="1px">                                       {/* kinda live a div */}
-                <Center fontSize="4xl" fontFamily="Work sans" color="black">
+            <Box d="flex" justifyContent="center" p={3} bg={"#212131"} w="100%" m="40px 0 15px 0" borderRadius="lg" borderWidth="1px">                                       {/* kinda live a div */}
+                <Center fontSize="4xl" fontFamily="Work sans" color="white">
                     Talk-A-Tive
                 </Center>
             </Box>
 
-            <Box bg={"white"} p={3} w="100%" borderRadius="lg" color="black" borderWidth="1px">
+            <Box bg="#212131" p={3} w="100%" borderRadius="lg" color="white" borderWidth="1px">
             <Tabs variant='soft-rounded'>
                 <TabList mb="1em">
                     <Tab width="50%">LOGIN</Tab>

@@ -9,7 +9,7 @@ const {
 } = require("../Controllers/chatControllers");
 const { protect } = require("../middleware/authMiddleware");
 
-const router = express.Router();
+const router = express.Router();  // router gets initialised, allowing us to define routes specific to chat functionalities
 
 router.route("/").post(protect, accessChat);
 router.route("/").get(protect, fetchChats);

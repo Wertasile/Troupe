@@ -9,6 +9,7 @@ const Login = () => {
 
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+
   const [loading, setLoading] = useState(false)
 
   const toast = useToast()
@@ -41,9 +42,9 @@ const Login = () => {
 
       toast({title: "Login Successful", status: "success", duration: 5000, isClosable: true, position: "bottom",});
       
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem("userInfo", JSON.stringify(data)); // user's credentials along with token are saved in local storage, so it is accessible across sessions
       setLoading(false);
-      history.push("/chats");
+      history.push("/chats");  // pushes users to the chat page
 
     } catch (error) {
       toast({title: "Error Occured!",description: error.response.data.message,status: "error",duration: 5000,isClosable: true, position: "bottom",});

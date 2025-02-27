@@ -29,7 +29,7 @@ const accessChat = asyncHandler(async (req, res) => {
   });
 
   if (isChat.length > 0) {
-    res.send(isChat[0]);
+    res.send(isChat[0]);   // if this block runs, then a response is sent and the function finishes here
   } else {
     var chatData = {
       chatName: "sender",
@@ -99,6 +99,8 @@ const createGroupChat = asyncHandler(async (req, res) => {
       isGroupChat: true,
       groupAdmin: req.user,
     });
+
+    // response to the console
 
     const fullGroupChat = await Chat.findOne({ _id: groupChat._id })
       .populate("users", "-password")

@@ -8,16 +8,14 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import ProfileModal from "./miscallaneous/ProfileModal";
 
 
-//import { Lottie } from "react-lottie"
-import animationData from "../animations/typing.json"
-
 import UpdateGroupChatModal from "./miscallaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 import ScrollableChat from "./ScrollableChat";
 
 import io from "socket.io-client"
 // socket io stuff below
-const ENDPOINT = "http://localhost:5000"
+// const ENDPOINT = "http://localhost:5000"
+const ENDPOINT = "https://real-time-chat-app-mern-un4z.onrender.com"
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -32,20 +30,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   // state for real; time message socket
   const [socketConnected, setSocketConnected] = useState(false)
 
-  
-  const defaultOptions = {
-    loop : true,
-    autoplay : true,
-    animationData : animationData,
-    rendererSettings : {
-      preserveAspectRatio : "xMidYMid slice"
-    }
-  }
-
-
   const toast = useToast();
 
-  
   const { selectedChat, setSelectedChat, user, notification, setNotification } =
     ChatState();
 
@@ -75,13 +61,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
       
     } catch (error) {
-      toast({
-        title: "Error Occured!",
-        description: "Failed to Load the Messages",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
+      toast({title: "Error Occured!",description: "Failed to Load the Messages",status: "error",duration: 5000,isClosable: true,position: "bottom",
       });
     }
   };
@@ -107,9 +87,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   }, [selectedChat]);
 
   
-
-
-
   useEffect(() => {
     socket.on("message received", (newMessageReceived) => {
       if (!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id){ // checking if a chat is selected (or) selected chat is the chat we got a new message for
@@ -156,23 +133,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         setMessages([...messages, data]);
         
       } catch (error) {
-        toast({
-          title: "Error Occured!",
-          description: "Failed to send the Message",
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "bottom",
-        });
+        toast({title: "Error Occured!",description: "Failed to send the Message",status: "error",duration: 5000,isClosable: true,position: "bottom",});
       }
     }
   };
-
-
-
-  
-  
-
 
   const typingHandler = (e) => {
     setNewMessage(e.target.value)
@@ -206,16 +170,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     <>
       {selectedChat ? (
         <>
-          <Text
-            fontSize={{ base: "28px", md: "30px" }}
-            pb={3}
-            px={2}
-            w="100%"
-            fontFamily="Work sans"
-            d="flex"
-            justifyContent={{ base: "space-between" }}
-            alignItems="center"
-          >
+          <Text fontSize={{ base: "28px", md: "30px" }} pb={3} px={2} w="100%" fontFamily="Work sans" display="flex" justifyContent={{ base: "space-between" }} alignItems="center" >
             <IconButton
               d={{ base: "flex", md: "none" }}
               icon={<ArrowBackIcon />}

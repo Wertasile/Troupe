@@ -1,21 +1,5 @@
 import { ViewIcon } from "@chakra-ui/icons";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  useDisclosure,
-  FormControl,
-  Input,
-  useToast,
-  Box,
-  IconButton,
-  Spinner,
-} from "@chakra-ui/react";
+import {Modal, ModalOverlay,ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, FormControl, Input, useToast, Box, IconButton, Spinner,} from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
@@ -23,12 +7,15 @@ import UserBadgeItem from "../userAvatar/UserBadgeItem";
 import UserListItem from "../userAvatar/UserListItem";
 
 const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const [groupChatName, setGroupChatName] = useState();
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [renameloading, setRenameLoading] = useState(false);
+
   const toast = useToast();
 
   const { selectedChat, setSelectedChat, user } = ChatState();
@@ -50,28 +37,16 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
       console.log(data);
       setLoading(false);
       setSearchResult(data);
+
     } catch (error) {
-      toast({
-        title: "Error Occured!",
-        description: "Failed to Load the Search Results",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom-left",
-      });
+      toast({title: "Error Occured!", description: "Failed to Load the Search Results", status: "error", duration: 5000, isClosable: true, position: "bottom-left", });
       setLoading(false);
     }
   };
 
   const handleRename = async () => {
     if (!groupChatName) {
-        toast({
-            title: "Enter a name",
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-            position: "bottom",
-          });
+        toast({ title: "Enter a name", status: "error",duration: 5000, isClosable: true, position: "bottom",});
         return;
     }
     try {
@@ -93,6 +68,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
       console.log(data._id);
       // setSelectedChat("");
       setSelectedChat(data);
+      // fetching chat again as there is a name change in one of the chats
       setFetchAgain(!fetchAgain);
       setRenameLoading(false);
     } catch (error) {
@@ -104,24 +80,12 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
 
   const handleAddUser = async (user1) => {
     if (selectedChat.users.find((u) => u._id === user1._id)) {
-      toast({
-        title: "User Already in group!",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+      toast({title: "User Already in group!", status: "error", duration: 5000,  isClosable: true,  position: "bottom",});
       return;
     }
 
     if (selectedChat.groupAdmin._id !== user._id) {
-      toast({
-        title: "Only admins can add someone!",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+      toast({ title: "Only admins can add someone!", status: "error", duration: 5000, isClosable: true, position: "bottom",});
       return;
     }
 
@@ -145,28 +109,16 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
       setFetchAgain(!fetchAgain);
       setLoading(false);
     } catch (error) {
-      toast({
-        title: "Error Occured!",
-        description: error.response.data.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+      toast({title: "Error Occured!", description: error.response.data.message, status: "error", duration: 5000, isClosable: true, position: "bottom",});
       setLoading(false);
     }
     setGroupChatName("");
   };
 
   const handleRemove = async (user1) => {
+    // so that if you're trying to remove a user, you can only do it if you are the admin (or) if you want to remove yourself
     if (selectedChat.groupAdmin._id !== user._id && user1._id !== user._id) {
-      toast({
-        title: "Only admins can remove someone!",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+      toast({title: "Only admins can remove someone!", status: "error", duration: 5000, isClosable: true, position: "bottom",});
       return;
     }
 
@@ -187,19 +139,15 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
       );
       console.log(data)
 
+
+      // if you remove yourself from the chat, then change selected Chat as you are no longer part of that chat
       user1._id === user._id ? setSelectedChat() : setSelectedChat(data);
       setFetchAgain(!fetchAgain);
       fetchMessages();
       setLoading(false);
+
     } catch (error) {
-      toast({
-        title: "Error Occured!",
-        description: error.response.data.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+      toast({title: "Error Occured!", description: error.response.data.message, status: "error", duration: 5000, isClosable: true, position: "bottom",});
       setLoading(false);
     }
     setGroupChatName("");

@@ -1,29 +1,15 @@
 import React, { useState } from 'react'
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-    Button,
-    useToast,
-    FormControl,
-    Input,
-    Box,
-  } from '@chakra-ui/react'
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, Button, useToast, FormControl, Input, Box,} from '@chakra-ui/react'
 import { Toast } from '@chakra-ui/react'
 import { ChatState } from '../../Context/ChatProvider'
 import axios from 'axios'
 import UserListItem from '../userAvatar/UserListItem'
 import UserBadgeItem from '../userAvatar/UserBadgeItem'
 
-
 const GroupChatModal = ( {children} ) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+    
     const [groupChatName, setGroupChatName] = useState()
     const [selectedUsers, setSelectedUsers] = useState([])
     const [search, setSearch] = useState()
@@ -34,13 +20,7 @@ const GroupChatModal = ( {children} ) => {
 
     const handleGroup = (userToAdd) => {
         if (selectedUsers.includes(userToAdd)){
-            toast({
-                title: "User already selected",
-                status: "warning",
-                duration: 5000,
-                isClosable: true,
-                position: "top-left",
-              });
+            toast({title: "User already selected",status: "warning",duration: 5000,isClosable: true,position: "top-left",});
             return
         }
 
@@ -71,28 +51,14 @@ const GroupChatModal = ( {children} ) => {
             setLoading(false);
             setSearchResult(data);
         } catch (error) {
-            toast({
-                title: "Error Occured",
-                description: "Failed to Load Search Results",
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-                position: "top-left",
-              });
+            toast({title: "Error Occured",description: "Failed to Load Search Results",status: "error",duration: 5000,isClosable: true,position: "top-left",});
               return;
         }
     }
 
     const handleSubmit = async() => {
         if (!groupChatName || !selectedUsers){
-            toast({
-                title: "Error Occured",
-                description: "PLEASE FILL ALL FIELDS",
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-                position: "top-left",
-              });
+            toast({title: "Error Occured",description: "PLEASE FILL ALL FIELDS",status: "error",duration: 5000,isClosable: true,position: "top-left",});
         }
 
         try {
@@ -112,14 +78,7 @@ const GroupChatModal = ( {children} ) => {
             setChats([data, ...chats])
             onClose()
 
-            toast({
-                title: "New Group Chat Created",
-                
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-                position: "top-left",
-              });
+            toast({title: "New Group Chat Created",status: "success",duration: 5000,isClosable: true,position: "top-left",});
         } catch (error) {
             
         }

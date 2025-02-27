@@ -4,15 +4,7 @@ import React, { useState } from 'react'
 import { ChatState } from '../../Context/ChatProvider'
 import ProfileModal from './ProfileModal'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-  } from '@chakra-ui/react'
+import {Drawer,DrawerBody,DrawerFooter,DrawerHeader,DrawerOverlay,DrawerContent,DrawerCloseButton,} from '@chakra-ui/react'
 import axios from 'axios'
 import ChatLoading from '../ChatLoading'
 import UserListItem from '../userAvatar/UserListItem'
@@ -38,13 +30,7 @@ const SideDrawer = () => {
 
     const handleSearch = async () => {
         if (!search) {
-          toast({
-            title: "Please Enter something in search",
-            status: "warning",
-            duration: 5000,
-            isClosable: true,
-            position: "top-left",
-          });
+          toast({title: "Please Enter something in search", status: "warning", duration: 5000, isClosable: true, position: "top-left",});
           return;
         }
     
@@ -62,14 +48,7 @@ const SideDrawer = () => {
           setLoading(false);
           setSearchResult(data);
         } catch (error) {
-          toast({
-            title: "Error Occured!",
-            description: "Failed to Load the Search Results",
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-            position: "bottom-left",
-          });
+          toast({title: "Error Occured!", description: "Failed to Load the Search Results", status: "error", duration: 5000, isClosable: true, position: "bottom-left",});
         }
       };
 
@@ -82,7 +61,6 @@ const SideDrawer = () => {
                   Authorization: `Bearer ${user.token}`,
                 },
             };
-
             const { data } = await axios.post("/api/chat",{ userId }, config)
 
             // appends a new chat to existing chat if the chat does not exists and is not part of data
@@ -94,14 +72,7 @@ const SideDrawer = () => {
             setLoadingChat(false)
             onClose()  // close drawer
         } catch (error) {
-            toast({
-                title: "Error Fetching Chat!",
-                description: error.message,
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-                position: "bottom-left",
-              });
+            toast({ title: "Error Fetching Chat!", description: error.message, status: "error", duration: 5000, isClosable: true, position: "bottom-left",});
         }
     }
 
@@ -145,12 +116,7 @@ const SideDrawer = () => {
 
                     <Menu>
                         <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
-                            <Avatar
-                            size="sm"
-                            cursor="pointer"
-                            name={user.name}
-                            src={user.pic}
-                        />
+                            <Avatar size="sm" cursor="pointer" name={user.name} src={user.pic}/>
                         </MenuButton>
                         <MenuList>
                         <ProfileModal user={user}>
@@ -162,30 +128,22 @@ const SideDrawer = () => {
                     </Menu>
                 </div>
             </Box>
-
+                
+            {/* SEARCH DRAWER */}
             <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />
                 <DrawerContent>
                 <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
                 <DrawerBody>
                     <Box d="flex" pb={2}>
-                    <Input
-                        placeholder="Search by name or email"
-                        mr={2}
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <Button onClick={handleSearch}>Go</Button>
+                        <Input placeholder="Search by name or email" mr={2} value={search} onChange={(e) => setSearch(e.target.value)}/>
+                        <Button onClick={handleSearch}>Go</Button>
                     </Box>
                     {loading ? (
                     <ChatLoading />
                     ) : (
                     searchResult?.map((user) => (
-                        <UserListItem
-                        key={user._id}
-                        user={user}
-                        handleFunction={() => accessChat(user._id)}
-                        />
+                        <UserListItem key={user._id} user={user} handleFunction={() => accessChat(user._id)} />
                     ))
                     )}
                     

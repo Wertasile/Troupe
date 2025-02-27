@@ -3,11 +3,10 @@ import ScrollableFeed from 'react-scrollable-feed'
 import { isLastMessage, isSameSender, isSameSenderMargin, isSameUser } from '../config/ChatLogics'
 import { ChatState } from '../Context/ChatProvider'
 import { Avatar, Tooltip } from '@chakra-ui/react'
+
 const ScrollableChat = ( { messages } ) => {
 
   const { user } = ChatState()
-
-  
   
   return (
     <ScrollableFeed>

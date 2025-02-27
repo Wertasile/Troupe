@@ -38,6 +38,7 @@ const sendMessage = asyncHandler(async (req, res) => {
   try {
     var message = await Message.create(newMessage);
 
+    // JSON response being sent back to console.
     message = await message.populate("sender", "name pic")
     message = await message.populate("chat")
     message = await User.populate(message, {

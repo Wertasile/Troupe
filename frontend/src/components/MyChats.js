@@ -1,19 +1,24 @@
-import { AddIcon } from "@chakra-ui/icons";
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Avatar, Box, Stack, Text } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { getSender } from "../config/ChatLogics";
 import ChatLoading from "./ChatLoading";
-import GroupChatModal from "./miscallaneous/GroupChatModal";
-import { Button } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
+import GCModal from "./miscallaneous/GCModal";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import ChatModal from "./miscallaneous/ChatModal";
+import ProfileModal from "./miscallaneous/ProfileModal";
 
-const MyChats = ({ fetchAgain }) => {
+const MyChats = ({ fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState();
-  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
+  const [gcModal, setGcModal] = useState(false)
+  const [scModal, setScModal] = useState(false)
+  const [profileModal, setProfileModal] = useState(false)
 
   const toast = useToast();
+  const history = useHistory()
+  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
   const fetchChats = async () => {
     // console.log(user._id);
@@ -37,46 +42,78 @@ const MyChats = ({ fetchAgain }) => {
     // eslint-disable-next-line
   }, [fetchAgain]);
 
-  return (
-    <Box d={{ base: selectedChat ? "none" : "flex", md: "flex" }}flexDir="column" alignItems="center" p={3} bg="#212131" w={{ base: "100%", md: "31%" }} borderRadius="lg" >
+  const logoutHandler = () => {
+    localStorage.removeItem("userInfo")
+    history.push("/")
+  }
 
-      <Box pb={3} px={3} fontSize={{ base: "28px", md: "30px" }} fontFamily="Work sans" display="flex" w="100%" justifyContent="space-between" alignItems="center" color="white">
-        My Chats
-        <GroupChatModal>
-          <Button
-            display="flex"
-            colorScheme="blue"
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<AddIcon />}
-          >
-            New Group Chat
-          </Button>
-        </GroupChatModal>
-      </Box>
-      <Box d="flex" flexDir="column" p={3} bg="#F8F8F8" w="100%"  h="100%" borderRadius="lg" overflowY="hidden">
-        {chats ? (
-          <Stack overflowY="scroll">
-            {chats.map((chat) => (
-              <Box onClick={() => setSelectedChat(chat)} cursor="pointer" bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"} color={selectedChat === chat ? "white" : "black"} px={3} py={2}  borderRadius="lg" key={chat._id}>
-                <Text>
-                  {!chat.isGroupChat
-                    ? getSender(loggedUser, chat.users)
-                    : chat.chatName}
-                </Text>
-                {chat.latestMessage && (
-                  <Text fontSize="xs">
-                    <b>{chat.latestMessage.sender.name} : </b>
-                    {chat.latestMessage.content.length > 50 ? chat.latestMessage.content.substring(0, 51) + "..." : chat.latestMessage.content}
-                  </Text>
-                )}
-              </Box>
-            ))}
-          </Stack>
-        ) : (
-          <ChatLoading />
-        )}
-      </Box>
-    </Box>
+  return (
+    <>
+      {gcModal ? (
+        <div class="gc-modal">
+
+        <GCModal/>
+      
+        </div>
+      ) : (<div></div>)}
+
+      {scModal ? (
+        <div class="gc-modal">
+
+        <ChatModal/>
+      
+        </div>
+      ) : (<div></div>)}
+
+      {profileModal ? (
+        <div class="gc-modal">
+
+        <ProfileModal user={user}/>
+      
+        </div>
+      ) : (<div></div>)}
+
+      <div id="all-chats-page">
+
+
+          
+        
+        <div><input className="input-decor" placeholder="Find or start a conversation" onClick={() => {setScModal(true)}}/></div>
+        <div><button className="primary-btn" onClick={() => {setGcModal(true)}}><i class="fa-solid fa-user-group"></i><i class="fa-solid fa-plus"></i></button></div>
+        <div>
+        
+          {chats ? (
+            <div className="all-chats">
+              {chats.map((chat) => (
+                <div className="all-chats-item" onClick={() => setSelectedChat(chat)} key={chat._id}>
+                  
+                    {!chat.isGroupChat
+                      ? getSender(loggedUser, chat.users)
+                      : chat.chatName}
+                  
+                  
+                  
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ChatLoading />
+          )}
+        
+        </div>
+        
+      </div>
+      <div id="profile-section">
+          
+          <div onClick={() => setProfileModal(true)}>
+            <Avatar size="sm" cursor="pointer" name={user.name} src={user.pic}/>
+            {user.name}
+          </div>
+          
+          <div><button onClick={logoutHandler} className="primary-btn">LOGOUT</button></div>
+      </div>
+    </>
+    
   );
 };
 

@@ -88,7 +88,7 @@ const SideDrawer = () => {
                     </Button>
                 </Tooltip>
 
-                <Text fontSize="2xl" fontFamily="cursive">TALK-A-TIVE</Text>
+                <div>TALK-TALK</div>
 
                 <div>
                     <Menu>

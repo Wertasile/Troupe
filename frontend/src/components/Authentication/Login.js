@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
+import { Button, Center, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
@@ -22,23 +22,15 @@ const Login = () => {
   const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
-      toast({title: "Please Fill all the Feilds", status: "warning", duration: 5000, isClosable: true, position: "bottom",});
+      toast({title: "Fill all Feilds", status: "warning", duration: 5000, isClosable: true, position: "bottom",});
       setLoading(false);
       return;
     }
 
     try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
+      const config = {headers: {"Content-type": "application/json",}};
 
-      const { data } = await axios.post(
-        "/api/user/login",
-        { email, password },
-        config
-      );
+      const { data } = await axios.post("/api/user/login",{ email, password },config);
 
       toast({title: "Login Successful", status: "success", duration: 5000, isClosable: true, position: "bottom",});
       
@@ -53,30 +45,30 @@ const Login = () => {
   };
 
   return (
-    <VStack spacing="5px" color="black">
-      
-      <FormControl id="email">
-        <FormLabel>Email</FormLabel>
-        <Input placeholder='Enter your Email' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-      </FormControl>
-
-      <FormControl id="password">
-        <FormLabel>Password</FormLabel>
-        <InputGroup>
-          <Input placeholder='Enter your Password' value={password} onChange={(e) => {setPassword(e.target.value)}} type={show ? "text":"password"}/>
-          <InputRightElement width="4.5rem"><Button h="1.75rem" size="sm" onClick={handleClick}>{show ? "hide":"show"}</Button></InputRightElement>
-        </InputGroup>
-      </FormControl>
-
-
-      <Button colorScheme='blue' width="100%" isLoading={loading} onClick={submitHandler}>Login</Button>
-      <Button colorScheme='red' width="100%" onClick={() => {
-        setEmail("guest@example.com") 
-        setPassword("123456")}
-      }>Get Guest Credentials</Button>
-
-      
-    </VStack>
+    
+    <div className='login-box'>
+      <div className='domine-regular centre'>Welcome Back</div>
+      <div className='label-input-pair'>
+        <div><label className='label'>Email</label></div>
+        <div><input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/></div>     
+      </div> 
+      <div>
+        <div><label className='label'>Password</label></div>
+        <div>
+          <input className="input-decor" placeholder='Enter your Password' onChange={(e) => {setPassword(e.target.value)}} type={show ? "text":"password"}/>
+          <button onClick={handleClick}>{show ? "hide":"show"}</button>
+        </div>
+          
+      </div> 
+          
+      <button className='primary-btn centre' style={{width:100}} isLoading={loading} onClick={submitHandler}>LOGIN</button>
+        <button className='primary-btn' width="100%" onClick={() => {
+          setEmail("guest@example.com")
+          setPassword("123456")}
+        }>Get Guest Credentials</button> 
+    </div> 
+    
+    
   )
 }
 

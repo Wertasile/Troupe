@@ -113,39 +113,28 @@ const Signup = () => {
   return (
     <VStack spacing="5px">
 
-      <FormControl id="first-name" isRequired>
-        <FormLabel>Name</FormLabel>
-        <Input placeholder="Enter Your Name" onChange={(e) => setName(e.target.value)}/>
-      </FormControl>
+      <div className='login-box'>
+        <div className="centre domine-regular">Join the Community!</div>
+        <div className='label-input-pair'>
+          <div><label className='label'>Email</label></div>
+          <div><input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/></div>     
+        </div> 
+        <div>
+          <div><label className='label'>Password</label></div>
+          <div>
+            <input className="input-decor" placeholder='Enter your Password' onChange={(e) => {setPassword(e.target.value)}} type={show ? "text":"password"}/>
+            <button onClick={handleClick}>{show ? "hide":"show"}</button>
+          </div>
+        </div>
+        <div>
+          <div><label className='label'>Confirm Password</label></div>
+          <div>
+            <input className="input-decor" placeholder='Enter your Password' onChange={(e) => {setConfirmpassword(e.target.value)}} type={show ? "text":"password"}/>
+            <button onClick={handleClick}>{show ? "hide":"show"}</button>
+          </div>
+        </div> 
+      </div>
 
-      <FormControl id="email" isRequired>
-        <FormLabel>Email Address</FormLabel>
-        <Input type="email" placeholder="Enter Your Email Address" onChange={(e) => setEmail(e.target.value)}/>
-      </FormControl>
-
-      <FormControl id="password" isRequired>
-        <FormLabel>Password</FormLabel>
-        <InputGroup size="md">
-          <Input type={show ? "text" : "password"} placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}/>
-          <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
-              {show ? "Hide" : "Show"}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-      </FormControl>
-
-      <FormControl id="password" isRequired>
-        <FormLabel>Confirm Password</FormLabel>
-        <InputGroup size="md">
-          <Input type={show ? "text" : "password"} placeholder="Confirm password" onChange={(e) => setConfirmpassword(e.target.value)} />
-          <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
-              {show ? "Hide" : "Show"}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-      </FormControl>
 
       <FormControl id="pic">
         <FormLabel>Upload your Picture</FormLabel>

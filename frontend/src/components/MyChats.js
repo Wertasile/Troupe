@@ -106,8 +106,8 @@ const MyChats = ({ fetchAgain}) => {
       <div id="profile-section">
           
           <div onClick={() => setProfileModal(true)}>
-            <Avatar size="sm" cursor="pointer" name={user.name} src={user.pic}/>
-            {user.name}
+            <div style={{justifySelf:"center"}}><Avatar size="sm" cursor="pointer" name={user.name} src={user.pic}/></div>
+            <div className="profile-username">{user.name}</div>
           </div>
           
           <div><button onClick={logoutHandler} className="primary-btn">LOGOUT</button></div>

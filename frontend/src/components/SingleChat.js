@@ -171,46 +171,44 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
       {selectedChat ? (
 
         <div id="single-chat">
-          
-            {/* <IconButton
-              d={{ base: "flex", md: "none" }}
-              icon={<ArrowBackIcon />}
-              onClick={() => setSelectedChat("")}
-            /> */}
           {messages &&
-            (!selectedChat.isGroupChat ? (
-              <div>
-                <div onClick={() => setModal(true)} className="domine-regular" >{getSender(user, selectedChat.users)}</div>
-                
-              </div>
-            ) : (
-              <>
-                <div onClick={() => setModal(true)} className="domine-regular"> {selectedChat.chatName.toUpperCase()}</div>
-                <UpdateGroupChatModal
-                  fetchMessages={fetchMessages}
-                  fetchAgain={fetchAgain}
-                  setFetchAgain={setFetchAgain}
-                />
-              </>
-            ))}
-          
-          <Box display="flex" flexDir="column" justifyContent="flex-end" p={3} bg="#092856;" w="100%" h="95%" borderRadius="lg" overflowY="hidden" 
-          >
-            {loading ? 
-            (<Spinner size="l" w={20} h={20} alignSelf="center" margin="auto"/>) : 
-            (
-            <div className="messages">
-              <ScrollableChat messages={messages}/>
+          (!selectedChat.isGroupChat ? (
+            // flex item 1 - chat/ group chat name
+            <div>
+              <div onClick={() => setModal(true)} className="domine-regular" >{getSender(user, selectedChat.users)}</div>
+              
             </div>
-            )
-          }
+          ) : (
+            // flex item 1 - chat/ group chat name
+            <div>
+              <div onClick={() => setModal(true)} className="domine-regular"> {selectedChat.chatName.toUpperCase()}</div>
+              {/* <UpdateGroupChatModal
+                fetchMessages={fetchMessages}
+                fetchAgain={fetchAgain}
+                setFetchAgain={setFetchAgain}
+              /> */}
+            </div>
+          ))}
 
-            <FormControl onKeyDown={sendMessage} id="first-name" isRequired mt={3}> 
-              {isTyping ? (<div style={{fontSize: "30px"}}> ... </div>) : (<></>)}
-              <Input variant="filled"bg="#E0E0E0" placeholder="Enter a message.." value={newMessage} onChange={typingHandler}/>
-            </FormControl>
-          </Box>
-        </div>
+          
+            <Box display="flex" flexDir="column" justifyContent="flex-end" p={3} bg="#092856;" w="100%" h="90%" borderRadius="lg" overflowY="hidden" >
+              {loading ? 
+              (<Spinner size="l" w={20} h={20} alignSelf="center" margin="auto"/>) : 
+              (
+              <div className="messages">
+                <ScrollableChat messages={messages}/>
+              </div>
+              )
+            }
+
+              <FormControl onKeyDown={sendMessage} id="first-name" isRequired mt={3}> 
+                {isTyping ? (<div style={{fontSize: "30px"}}> ... </div>) : (<></>)}
+                <Input variant="filled"bg="#E0E0E0" placeholder="Enter a message.." value={newMessage} onChange={typingHandler}/>
+              </FormControl>
+            </Box>
+          </div>
+          
+        
 
       ) : (
         // to get socket.io on same page

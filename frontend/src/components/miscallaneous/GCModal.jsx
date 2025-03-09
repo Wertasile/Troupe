@@ -9,7 +9,7 @@ import ChatLoading from '../ChatLoading'
 
 
 
-const GCModal = () => {
+const GCModal = ( {setGcModal} ) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     
     const [groupChatName, setGroupChatName] = useState()
@@ -61,6 +61,7 @@ const GCModal = () => {
     const handleSubmit = async() => {
         if (!groupChatName || !selectedUsers){
             toast({title: "Error Occured",description: "PLEASE FILL ALL FIELDS",status: "error",duration: 5000,isClosable: true,position: "top-left",});
+            return;
         }
 
         try {
@@ -77,7 +78,7 @@ const GCModal = () => {
                 }
                 ,config)
 
-            setChats([data, ...chats])
+            setChats([data.data, ...chats])
             onClose()
 
             toast({title: "New Group Chat Created",status: "success",duration: 5000,isClosable: true,position: "top-left",});
@@ -117,7 +118,7 @@ const GCModal = () => {
             )}
             
             
-            <button type="button" className="primary-btn" onClick={handleSubmit}>CREATE</button>
+            <button type="button" className="primary-btn" onClick={() => {handleSubmit(); setGcModal(false);}}>CREATE</button>
 
     </div>
     </>

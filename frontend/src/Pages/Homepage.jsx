@@ -1,9 +1,6 @@
 'use client'
 
-import { Box, Center, Container, Text, TabList, Tab, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 import React, { useEffect, useState} from 'react'
-import Login from '../components/Authentication/Login'
-import Signup from '../components/Authentication/Signup'
 import { useHistory, Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Homepage = () => {
@@ -20,7 +17,10 @@ const Homepage = () => {
     return (
         <>
             <div className='login-bar'>
-                <div className='domine-regular'>DISCOURSE</div>
+                <div className='domine-regular'>
+                    {/* <img src="/images/discourse-logo.png" height="10" alt="Discourse Logo" /> */}
+                    DISCOURSE
+                </div>
                 <div className='login-bar-items'>
                     <div>Download</div>
                     <div>Blog</div>

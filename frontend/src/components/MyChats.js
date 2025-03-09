@@ -52,7 +52,7 @@ const MyChats = ({ fetchAgain}) => {
       {gcModal ? (
         <div class="gc-modal">
 
-        <GCModal/>
+        <GCModal setGcModal={setGcModal}/>
       
         </div>
       ) : (<div></div>)}
@@ -73,37 +73,36 @@ const MyChats = ({ fetchAgain}) => {
         </div>
       ) : (<div></div>)}
 
-      <div id="all-chats-page">
-
-
-          
-        
-        <div><input className="input-decor" placeholder="Find or start a conversation" onClick={() => {setScModal(true)}}/></div>
-        <div><button className="primary-btn" onClick={() => {setGcModal(true)}}><i class="fa-solid fa-user-group"></i><i class="fa-solid fa-plus"></i></button></div>
+      <div id="my-chats-component">
+        {/* flex item 1 : all chats */}
         <div>
-        
-          {chats ? (
-            <div className="all-chats">
-              {chats.map((chat) => (
-                <div className="all-chats-item" onClick={() => setSelectedChat(chat)} key={chat._id}>
-                  
-                    {!chat.isGroupChat
-                      ? getSender(loggedUser, chat.users)
-                      : chat.chatName}
-                  
-                  
-                  
-                </div>
-              ))}
-            </div>
-          ) : (
-            <ChatLoading />
-          )}
-        
+          <div><input className="input-decor" placeholder="Find or start a conversation" onClick={() => {setScModal(true)}}/></div>
+          <div><button className="primary-btn" onClick={() => {setGcModal(true)}}><i class="fa-solid fa-user-group"></i><i class="fa-solid fa-plus"></i></button></div>
+          <div>
+            {chats ? (
+              <div className="all-chats">
+                {chats.map((chat) => (
+                  <div className="all-chats-item" onClick={() => setSelectedChat(chat)} key={chat._id}>
+                    
+                      {!chat.isGroupChat
+                        ? getSender(loggedUser, chat.users)
+                        : chat.chatName}
+                    
+                    
+                    
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <ChatLoading />
+            )}
+          
+          </div>
         </div>
+
+        {/* flex item 2 : my profile section */}
         
-      </div>
-      <div id="profile-section">
+        <div id="profile-section">
           
           <div onClick={() => setProfileModal(true)}>
             <div style={{justifySelf:"center"}}><Avatar size="sm" cursor="pointer" name={user.name} src={user.pic}/></div>
@@ -111,7 +110,15 @@ const MyChats = ({ fetchAgain}) => {
           </div>
           
           <div><button onClick={logoutHandler} className="primary-btn">LOGOUT</button></div>
+        </div>
+        
+
+          
+        
+        
+        
       </div>
+      
     </>
     
   );

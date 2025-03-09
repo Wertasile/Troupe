@@ -741,12 +741,15 @@ video {
 }
 
 /* ------------- CSS FOR THE MYCHATS COMPONENT ------------------------------------------------------------------- */
-#all-chats-page{
+#my-chats-component{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #051937;
-  padding: 5px;
-  height: 90vh;
   width: 20vw;
+  height: 100vh;
   overflow-y:hidden;
+  overflow-x: hidden;
   text-shadow: 0px 0px 2px #FFFFFF;
   border-radius: 0px 0px 5px 0px;
 }
@@ -756,7 +759,6 @@ video {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  height: 85vh;
   overflow-y:scroll;
 }
 
@@ -781,15 +783,15 @@ video {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 5px;
   justify-content: space-between;
-  min-height: 50px;
-  position: fixed;
-  width: 20vw;
-  height: 10vh;
+  width: inherit;
+  
 }
 /* ------------- CSS FOR THE SINGLE CHAT COMPONENT ------------------------------------------------------------------- */
 #single-chat{
+  /* display: flex;
+  flex-direction: column; */
+
   background-color: #092856;
   height: 100vh;
   width: 80vw;
@@ -891,9 +893,8 @@ video {
     font-size: 16px;
   }
 
-  #all-chats-page {
+  #my-chats-component {
     width: 35vw;
-    height: 90vh;
     font-size: 16px;
   }
 
@@ -908,8 +909,6 @@ video {
   }
 
   #profile-section {
-    width: 35vw;
-    height: 10vh;
     align-items: center;
   }
 
@@ -929,7 +928,7 @@ video {
 }
 
 @media screen and (min-width:480px) and (max-width: 900px) {
-  #all-chats-page {
+  #my-chats-component {
     width: 35vw;
     font-size: 16px;
   }
@@ -939,7 +938,6 @@ video {
   }
 
   #profile-section {
-    width: 35vw;
   }
 
   #single-chat{

@@ -3,8 +3,9 @@
 import React, { useState } from 'react'
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { useHistory } from "react-router";
+// import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+// import { useNavigate } from 'react-router';
 
 const LogonPage = () => {
   const [show,setShow] = useState()
@@ -15,7 +16,7 @@ const LogonPage = () => {
   const [loading, setLoading] = useState(false)
 
   const toast = useToast()
-  const history = useHistory()
+  // const navigate = useNavigate()
 
   const handleClick = () => {
     setShow(!show)
@@ -38,7 +39,7 @@ const LogonPage = () => {
       
       localStorage.setItem("userInfo", JSON.stringify(data)); // user's credentials along with token are saved in local storage, so it is accessible across sessions
       setLoading(false);
-      history.push("/chats");  // pushes users to the chat page
+      window.location.href = "/chats";  // pushes users to the chat page
 
     } catch (error) {
       toast({title: "Error Occured!",description: error.response.data.message,status: "error",duration: 5000,isClosable: true, position: "bottom",});

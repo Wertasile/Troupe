@@ -8,6 +8,7 @@ const Chat = require("../Models/chatModel");
 //@access          Protected
 const allMessages = asyncHandler(async (req, res) => {
   try {
+    // JSON response being sent back to console.
     const messages = await Message.find({ chat: req.params.chatId })
       .populate("sender", "name pic email")
       .populate("chat");

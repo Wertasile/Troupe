@@ -1,4 +1,4 @@
-import { Avatar, Box, Stack, Text } from "@chakra-ui/react";
+import { Avatar, Box, Stack, Text, Tooltip } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -74,11 +74,24 @@ const MyChats = ({ fetchAgain}) => {
       ) : (<div></div>)}
 
       <div id="my-chats-component">
-        {/* flex item 1 : all chats */}
         <div>
-          <div><input className="input-decor" placeholder="Find or start a conversation" onClick={() => {setScModal(true)}}/></div>
-          <div><button className="primary-btn" onClick={() => {setGcModal(true)}}><i class="fa-solid fa-user-group"></i><i class="fa-solid fa-plus"></i></button></div>
-          <div>
+          
+          <div className="profile-section" onClick={() => setProfileModal(true)}>
+            <Tooltip label={user.name} placement="bottom-start" hasArrow><div style={{justifySelf:"center"}}><Avatar size="sm" cursor="pointer" name={user.name} src={user.pic}/></div></Tooltip>
+            
+            <Tooltip label={"Logout"} placement="bottom-start" hasArrow><div><button onClick={logoutHandler} className="attachment-item"><i class="fa-solid fa-right-from-bracket"></i></button></div></Tooltip>
+            
+          </div>
+          <div className="profile-section">
+            <input className="input-decor" placeholder="Find or start a conversation" onClick={() => {setScModal(true)}}/>
+            <Tooltip label={"Create Group Chat"} placement="bottom-start" hasArrow><div><button className="attachment-item" onClick={() => {setGcModal(true)}}><i class="fa-solid fa-plus"></i></button></div></Tooltip>
+          </div>
+          
+          
+          
+        </div>
+        {/* flex item 1 : all chats */}
+        
             {chats ? (
               <div className="all-chats">
                 {chats.map((chat) => (
@@ -87,9 +100,7 @@ const MyChats = ({ fetchAgain}) => {
                       {!chat.isGroupChat
                         ? getSender(loggedUser, chat.users)
                         : chat.chatName}
-                    
-                    
-                    
+
                   </div>
                 ))}
               </div>
@@ -97,20 +108,12 @@ const MyChats = ({ fetchAgain}) => {
               <ChatLoading />
             )}
           
-          </div>
-        </div>
-
-        {/* flex item 2 : my profile section */}
+          
         
-        <div id="profile-section">
-          
-          <div onClick={() => setProfileModal(true)}>
-            <div style={{justifySelf:"center"}}><Avatar size="sm" cursor="pointer" name={user.name} src={user.pic}/></div>
-            <div className="profile-username">{user.name}</div>
-          </div>
-          
-          <div><button onClick={logoutHandler} className="primary-btn">LOGOUT</button></div>
-        </div>
+
+        
+            
+            
         
 
           

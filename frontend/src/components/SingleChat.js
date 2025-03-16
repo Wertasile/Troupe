@@ -1,5 +1,5 @@
 
-import { IconButton, Spinner, useToast, Box, Text, Input, FormControl } from "@chakra-ui/react";
+import { IconButton, Spinner, useToast, Box, Text, Input, FormControl, Tooltip } from "@chakra-ui/react";
 import { getSender, getSenderFullDetails } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -22,6 +22,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
+  const [attachment, setAttachment] = useState("false");
 
 
   const [typing, setTyping] = useState(false);
@@ -54,7 +55,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
       );
       setMessages(data);
 
-      console.table(messages)
+      console.log(messages)
       setLoading(false);
       // emitting the signal to join the room, with the id of the chat, we create a new room so users can join that particular room i.e. chat
       socket.emit("join chat", selectedChat._id)
@@ -84,6 +85,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
 
     selectedChatCompare = selectedChat // this keeps a backup of whatever the selectedChat is so we can compare it and know wether to emit to user or to send notif
     // eslint-disable-next-line
+    setAttachment(false)
   }, [selectedChat]);
 
   
@@ -200,10 +202,32 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
               </div>
               )
             }
-
-              <FormControl onKeyDown={sendMessage} id="first-name" isRequired mt={3}> 
-                {isTyping ? (<div style={{fontSize: "30px"}}> ... </div>) : (<></>)}
+              {isTyping ? (<div style={{fontSize: "30px"}}> ... </div>) : (<></>)}
+              {attachment &&
+                  (<div className="attachment">
+                    <Tooltip label={"Add Image"} placement="top-start" hasArrow>
+                        <div className="attachment-item upload-btn-wrapper">
+                          <button className=""><i class="fa-solid fa-image"></i></button>
+                          <input type="file" name="picture" accept="image/png, image/jpeg" />
+                      </div>
+                    </Tooltip>
+                    <Tooltip label={"Add File"} placement="top-start" hasArrow>
+                      <div className="attachment-item upload-btn-wrapper">
+                        <button className=""><i class="fa-solid fa-file"></i></button>
+                        <input type="file" name="myfile" />
+                      </div>
+                    </Tooltip>
+                    <Tooltip label={"Add Audio"} placement="top-start" hasArrow><div className="attachment-item"><i class="fa-solid fa-location-dot"></i></div></Tooltip>
+                    
+                  </div>)
+                  
+                }
+              <FormControl className="message-input" onKeyDown={sendMessage} id="first-name" isRequired mt={3}> 
+                
                 <Input variant="filled"bg="#E0E0E0" placeholder="Enter a message.." value={newMessage} onChange={typingHandler}/>
+                <Tooltip label={"Add Attachment"} placement="bottom-start" hasArrow><div className="attachment-item" style={{fontSize:"30px"}} onClick={() => setAttachment(!attachment)}><i class="fa-solid fa-paperclip"></i></div></Tooltip>
+                <Tooltip label={"Add Emoji"} placement="bottom-start" hasArrow><div className="attachment-item" style={{fontSize:"30px"}} onClick={() => setAttachment(!attachment)}><i class="fa-solid fa-face-smile"></i></div></Tooltip>
+                
               </FormControl>
             </Box>
           </div>

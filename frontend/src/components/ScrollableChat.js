@@ -6,10 +6,12 @@ import { Avatar, Tooltip } from '@chakra-ui/react';
 import AWS from 'aws-sdk';
 import S3 from 'aws-sdk/clients/s3';
 
+
 AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey: process.env.AWS_SECRET,
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET,
 });
+
 const ScrollableChat = ({ messages }) => {
   const { user } = ChatState();
   const [imageUrls, setImageUrls] = useState({});
@@ -154,11 +156,6 @@ const ScrollableChat = ({ messages }) => {
             marginLeft: isSameSenderMargin(messages, m, i, user._id),
             marginTop: isSameUser(messages, m, i, user._id) ? 3 : 10
           }}>
-            {/* {m.messagetype === "image" ? (
-              <img src={imageUrls[m._id]} width="100" height="100" alt="Message content" />
-            ) : (
-              <>{m.content}</>
-            )} */}
             {
               (() => {
                 switch (m.messagetype) {

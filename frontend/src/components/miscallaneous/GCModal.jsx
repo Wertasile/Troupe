@@ -101,6 +101,7 @@ const GCModal = ( {setGcModal} ) => {
                     <UserBadgeItem key={u._id} user={u} handleFunction={() => handleDelete(u)} />
                 ))}
             </div>
+            <button type="button" className="primary-btn" onClick={() => {handleSubmit(); setGcModal(false);}}>CREATE</button>
 
             {/* BELOW IS USER SEARCH SUGGESTION FOR GROUP MEMBERS*/}
         
@@ -118,7 +119,7 @@ const GCModal = ( {setGcModal} ) => {
             )}
             
             
-            <button type="button" className="primary-btn" onClick={() => {handleSubmit(); setGcModal(false);}}>CREATE</button>
+            
 
     </div>
     </>

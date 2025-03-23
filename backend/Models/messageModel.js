@@ -6,7 +6,7 @@ const messageModel = mongoose.Schema({
     content : {type:String, trim:true},
     chat : {type: mongoose.Schema.Types.ObjectId, ref:"Chat"},
     messagetype: {type:String},
-    messageURL: {type:String}
+    url: {type:String}
 },{
     timestamps:true
 })

@@ -4,8 +4,7 @@ import { Toast } from '@chakra-ui/react'
 import { ChatState } from '../../Context/ChatProvider'
 import axios from 'axios'
 import UserListItem from '../userAvatar/UserListItem'
-import UserBadgeItem from '../userAvatar/UserBadgeItem'
-import ChatLoading from '../ChatLoading'
+
 
 
 

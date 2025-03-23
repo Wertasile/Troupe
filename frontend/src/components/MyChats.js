@@ -20,6 +20,21 @@ const MyChats = ({ fetchAgain}) => {
   const history = useHistory()
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
+  const deleteChat = async (chatId) => {
+    console.log(chatId)
+    try{
+      const config = { headers : {Authorization: `Bearer ${user.token}`}}
+
+      const { data } = await axios.delete(`/api/chat/${chatId}`, config);
+
+      console.log(data)
+      fetchChats()
+      setSelectedChat("")
+    }catch (e){
+      toast({title:`Error ${e}`, description:"Failed Deleted", status:"error", duration: 5000, isClosable:true, position:"bottom"})
+    }
+  }
+
   const fetchChats = async () => {
     // console.log(user._id);
     try {
@@ -50,7 +65,7 @@ const MyChats = ({ fetchAgain}) => {
   return (
     <>
       {gcModal ? (
-        <div class="gc-modal">
+        <div className="gc-modal">
 
         <GCModal setGcModal={setGcModal}/>
       
@@ -58,7 +73,7 @@ const MyChats = ({ fetchAgain}) => {
       ) : (<div></div>)}
 
       {scModal ? (
-        <div class="gc-modal">
+        <div className="gc-modal">
 
         <ChatModal/>
       
@@ -66,7 +81,7 @@ const MyChats = ({ fetchAgain}) => {
       ) : (<div></div>)}
 
       {profileModal ? (
-        <div class="gc-modal">
+        <div className="gc-modal">
 
         <ProfileModal user={user}/>
       
@@ -97,9 +112,11 @@ const MyChats = ({ fetchAgain}) => {
                 {chats.map((chat) => (
                   <div className="all-chats-item" onClick={() => setSelectedChat(chat)} key={chat._id}>
                     
-                      {!chat.isGroupChat
+                      <div>{!chat.isGroupChat
                         ? getSender(loggedUser, chat.users)
-                        : chat.chatName}
+                        : chat.chatName
+                      }</div>
+                      <div onClick={() => deleteChat(chat._id) }><i className="fa-solid fa-xmark"></i></div>
 
                   </div>
                 ))}

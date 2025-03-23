@@ -74,6 +74,23 @@ const fetchChats = asyncHandler(async (req, res) => {
   }
 });
 
+//@description     Delete Chat
+//@route           DELETE /api/chat/
+//@access          Protected
+const deleteChat = asyncHandler(async (req, res) => {
+  const { chatId } = req.params;
+  if (!chatId) {
+    return res.status(400).json({ message: "chatId is required" });
+  }
+  const deletedChat = await Chat.findByIdAndDelete(chatId);
+  if (!deletedChat) {
+    return res.status(404).json({ message: "Chat not found" });
+  }
+  res.status(200).json(deletedChat);
+});
+
+
+
 //@description     Create New Group Chat
 //@route           POST /api/chat/group
 //@access          Protected
@@ -198,6 +215,7 @@ const addToGroup = asyncHandler(async (req, res) => {
 module.exports = {
   accessChat,
   fetchChats,
+  deleteChat,
   createGroupChat,
   renameGroup,
   addToGroup,

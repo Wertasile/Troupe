@@ -1,5 +1,10 @@
 # CHAT APP
 
+Please visit this Link, Its the App! 
+
+https://real-time-chat-app-mern-un4z.onrender.com/ 
+
+
 ## INTRODUCTION
 This project is a real-time Chatting App which was built using the MERN Stack. The FrontEnd UI that the user communicates with is built using React, a Javascript Framework. All Data is stored in a MongoDB database, which is a NoSQL Database. ExpressJS framework is used to facilitate the building of REST APIs, which allow from the communication between our FrontEnd (Client) and BackEnd (Database). The Application is powered using Node.js Rutime and Node Package Manager is used to get the required libraries to build an Application powered by NodeJS.
 
@@ -16,7 +21,7 @@ This project is a real-time Chatting App which was built using the MERN Stack. T
 10. cors : 
 
 ## PROJECT STRUCTURE AND SUMMARY
-the project is divided into two parts, the FrontEnd and the BackEnd. The application is customised using TailwindCSS and React in the FrontEnd. Libraries such as Express and Mongoose enable the communication of our FrontEnd with the MongoDB database which has all user, message and chat data. 
+The project is divided into two parts, the FrontEnd and the BackEnd. The application is customised using TailwindCSS and React in the FrontEnd. Libraries such as Express and Mongoose enable the communication of our FrontEnd with the MongoDB database which has all user, message and chat data. 
 
 ## BACKEND 
 The BackEnd of the project consists of 4 folders, which ensure that the user can interact with the database and perform CRUD (Create, Read, Update and Delete) oeprations with the Database.
@@ -48,7 +53,7 @@ server.js
 │   │   ├── ChatController.js
 │   │   ├── MessageController.js
 │   │   ├── UserController.js
-├── server.js
+│   ├── server.js
 
 ```
 ### CONFIGURATION FILES (config)
@@ -242,12 +247,53 @@ The protect middleware is also used, so only authorised users can access the rou
 
 ## FRONTEND
 
-STRUCTURE
+### STRUCTURE
 
+```
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   │   ├── miscallaneous
+│   │   │   │   ├── ChatModal.jsx
+│   │   │   │   ├── GCModal.jsx
+│   │   │   │   ├── ProfileModal.jsx
+│   │   │   │   ├── UpdateGroupChatModal.jsx
+│   │   │   ├── userAvatar
+│   │   │   │   ├── UserBadgeItem.js
+│   │   │   │   ├── UserListItem.js
+│   │   │   ├── MyChats.js
+│   │   │   ├── ScrollableChat.js
+│   │   │   ├── SingleChat.js
+│   │   ├── config
+│   │   │   ├── ChatLogics.js
+│   │   ├── Context
+│   │   │   ├── ChatProvider.js
+│   │   ├── Pages
+│   │   │   ├── ChatPage.js
+│   │   │   ├── HomePage.js
+│   │   │   ├── LogonPage.js
+│   │   │   ├── RegisterPage.js
+│   │   ├── App.css
 
-Please visit this Link, Its the App! 
+```
+### Config
 
-https://real-time-chat-app-mern-un4z.onrender.com/ 
+### Context
+
+### Pages and User Interface
+
+## WEBSOCKET IMPLEMENTATION - CONNECTION THE CLIENT AND SERVER IN REAL TIME
+
+WebSockets are used to enable real time updates within the app. This is done by enabling a persistent connection between the client and the server.
+
+All the implementation has been done in 2 files, the server files (server.js) and the Component for Chats (SingleChat.js). There are 3 instances where WebSockets have been implemented.
+
+### 1) 
+
+### 2)
+
+### 3)
+
 
 
 

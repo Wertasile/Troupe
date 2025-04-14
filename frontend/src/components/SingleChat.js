@@ -6,10 +6,10 @@ import axios from "axios";
 import "./styles.css"
 import { ChatState } from "../Context/ChatProvider";
 import ScrollableChat from "./ScrollableChat";
-import AWS from 'aws-sdk'; // Import entire SDK (optional)
+import AWS from 'aws-sdk';
 // import AWS from 'aws-sdk/global'; // Import global AWS namespace (recommended)
 import S3 from 'aws-sdk/clients/s3'; // Import only the S3 client
-import io from "socket.io-client"
+import io from "socket.io-client" // io is a function to call an individual socket
 import MicRecorder from 'mic-recorder-to-mp3';
 
 const recorder = new MicRecorder({ bitRate: 128 });
@@ -17,6 +17,7 @@ AWS.config.update({
   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
   secretAccessKey: process.env.REACT_APP_AWS_SECRET,
 });
+
 const REGION = "us-east-1"
 
 // socket io stuff below
@@ -89,10 +90,22 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
     }
   };
 
+  // WHEN USERS SELECTS A CHAT, FETCH MESSAGES OF THAT CHAT
   useEffect(() => {
-    // starting socket connection
+    fetchMessages();
+
+    selectedChatCompare = selectedChat // this keeps a backup of whatever the selectedChat is so we can compare it and know wether to emit to user or to send notif
+    // eslint-disable-next-line
+    setAttachment(false)
+  }, [selectedChat]);
+
+  // ESTABLISHING SOCKET CONNECTION
+  useEffect(() => {
+    // starting socket connection by passing in the URL of our server
     socket = io(ENDPOINT)
-    socket.emit("setup", user)  // emit something from here in the set up 
+    socket.emit("setup", user)  // send setup event to server, we also emit user data
+
+    //socket listens to connected event declared in server.js, even runs everytime we connect to server
     socket.on("connected", () => {
       setSocketConnected(true)
     })
@@ -102,15 +115,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
     socket.on("stop typing", () => setIsTyping(false))
   }, [])
 
-  useEffect(() => {
-    fetchMessages();
 
-    selectedChatCompare = selectedChat // this keeps a backup of whatever the selectedChat is so we can compare it and know wether to emit to user or to send notif
-    // eslint-disable-next-line
-    setAttachment(false)
-  }, [selectedChat]);
-
-  
+  // 
   useEffect(() => {
     socket.on("message received", (newMessageReceived) => {
       if (!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id){ // checking if a chat is selected (or) selected chat is the chat we got a new message for
@@ -127,7 +133,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
     }) // monitors socket to see if we receive anything from this socket
     
   }) // we want to update this useEFFECT ON EVERY STATE UPDATE
-
 
 
   const sendMessage = async (event, type="text", url="") => {
@@ -522,23 +527,19 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
       {selectedChat ? (
 
         <div id="single-chat">
-          {messages &&
-          (!selectedChat.isGroupChat ? (
-            // flex item 1 - chat/ group chat name
-            
-              <div onClick={() => setModal(true)} className="domine-regular" >{getSender(user, selectedChat.users)}</div>
-              
-            
-          ) : (
-            // flex item 1 - chat/ group chat name
-            
-              <div onClick={() => setModal(true)} className="domine-regular"> {selectedChat.chatName.toUpperCase()}</div>
-              
-            
-          ))}
+          <div className="chat-name">
+            {messages &&
+            (!selectedChat.isGroupChat ? (
+                <div onClick={() => setModal(true)} className="domine-regular" >{getSender(user, selectedChat.users)}</div>
 
-          
-            <Box display="flex" flexDir="column" justifyContent="flex-end" p={0} bg="#092856;" w="100%" h="100%" borderRadius="lg" overflowY="hidden" >
+            ) : (
+                <div onClick={() => setModal(true)} className="domine-regular"> {selectedChat.chatName.toUpperCase()}</div>
+            ))}
+          </div>
+          <div className="chat">
+
+          </div>
+            <div id="chat">
               {loading ? 
               (<Spinner size="l" w={20} h={20} alignSelf="center" margin="auto"/>) : 
               (
@@ -552,13 +553,13 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
                   (<div className="attachment">
 
                     {/* UPLOAD IMAGE */}
-                    {/* <Tooltip label={"Add Image"} placement="top-start" hasArrow>
+                    <Tooltip label={"Add Image"} placement="top-start" hasArrow>
                         <div className="attachment-item upload-btn-wrapper">
                           <button className=""><i class="fa-solid fa-image"></i></button>
                           <input type="file" onChange={handleImageChange} name="picture" accept="image/png, image/jpeg" />
                           
                       </div>
-                    </Tooltip> */}
+                    </Tooltip>
 
                     {/* UPLOAD FILE */}
                     <Tooltip label={"Add File"} placement="top-start" hasArrow>
@@ -586,17 +587,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
                   </div>)
                   
                 }
-              <FormControl className="message-input" onKeyDown={sendMessage} id="first-name" isRequired mt={3}> 
+              <div className="message-input" onKeyDown={sendMessage} id="first-name" isRequired mt={3}> 
                 
                 <Input variant="filled"bg="#E0E0E0" placeholder="Enter a message.." value={newMessage} onChange={typingHandler}/>
                 <Tooltip label={"Add Attachment"} placement="bottom-start" hasArrow><div className="attachment-item" style={{fontSize:"30px"}} onClick={() => setAttachment(!attachment)}><i class="fa-solid fa-paperclip"></i></div></Tooltip>
                 <Tooltip label={"Add Emoji"} placement="bottom-start" hasArrow><div className="attachment-item" style={{fontSize:"30px"}} onClick={() => setAttachment(!attachment)}><i class="fa-solid fa-face-smile"></i></div></Tooltip>
                 
-              </FormControl>
-            </Box>
+              </div>
+            </div>
           </div>
       ) : (
-        // to get socket.io on same page
         <div></div>
       )}
     </>

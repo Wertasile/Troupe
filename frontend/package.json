@@ -24,10 +24,11 @@
     "react-scripts": "5.0.1",
     "react-scrollable-feed": "^2.0.2",
     "socket.io-client": "^4.8.1",
+    "talktalk": "file:..",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "cross-env PORT=3000 env-cmd -f ../.env react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

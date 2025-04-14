@@ -100,14 +100,22 @@ const RegisterPage = () => {
   }
 
   return (
-    <>
+    
 
-      <div className='login-box'>
-        <div className="centre domine-regular">Join the Community!</div>
+    <div className='auth-page'>
+      <div className='login'>
+        <h1>WELCOME TO TROUPE</h1>
+        <h1>THE BEST PLACE TO <span>GAME</span></h1>
+      </div>
+      <div className='login login-right '>
         <div className='label-input-pair'>
           <div><label className='label'>Email</label></div>
           <div><input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/></div>     
-        </div> 
+        </div>
+        <div className='label-input-pair'>
+          <div><label className='label'>Username</label></div>
+          <div><input className='input-decor' placeholder='Enter your username' onChange={(e) => {setName(e.target.value)}}/></div>     
+        </div>  
         <div>
           <div><label className='label'>Password</label></div>
           <div className="password">
@@ -128,10 +136,9 @@ const RegisterPage = () => {
         </div>
         <div className='centre'>
           <div><button className='primary-btn centre' style={{width:100}} onClick={submitHandler}>REGISTER</button></div>
-          <div className='centre'><Link to="/login">Already have an account? Click here to login!</Link></div>
+          <div className='centre'><Link to="/">Already have an account? Click here to login!</Link></div>
         </div> 
       </div>
-
 
       {/* <FormControl id="pic">
         <FormLabel>Upload your Picture</FormLabel>
@@ -141,7 +148,12 @@ const RegisterPage = () => {
       <Button colorScheme="blue" width="100%" style={{ marginTop: 15 }} onClick={submitHandler} isLoading={picLoading}>
         Sign Up
       </Button> */}
-    </>
+      
+      </div>
+
+
+      
+    
   );
 };
 

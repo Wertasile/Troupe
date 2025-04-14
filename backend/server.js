@@ -47,12 +47,11 @@ if (process.env.NODE_ENV==='production'){
 app.use(notFound)
 app.use(errorHandler)
 
-
-
 const PORT = process.env.PORT || 5000
 
 const server = app.listen(5000, console.log(`Server started on port ${PORT}`))
 
+// http request to server to open connection
 const io = require("socket.io")(server, {
     pingTimeout: 60000,                            // waits for ms before connection is closed for inactivity
     cors : {
@@ -61,8 +60,9 @@ const io = require("socket.io")(server, {
 })
 
 // creating a connection
+// runs every single time 
 io.on("connection", (socket) => {
-    console.log("Connected to socket.io")
+    console.log("User connected to socket.io : " + socket.id)
 
     // below we are creating a new socket where the front end will send some data and join a 'room'
     socket.on("setup", (userData) => {

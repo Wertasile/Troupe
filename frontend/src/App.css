@@ -211,19 +211,6 @@ abbr:where([title]) {
   text-decoration: underline dotted;
 }
 
-/*
-Remove the default font size and weight for headings.
-*/
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
 
 /*
 Reset links to optimize for opt-in styling instead of opt-out.
@@ -443,21 +430,6 @@ summary {
 Removes the default spacing and border for appropriate elements.
 */
 
-blockquote,
-dl,
-dd,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-figure,
-p,
-pre {
-  margin: 0;
-}
 
 fieldset {
   margin: 0;
@@ -575,12 +547,16 @@ video {
 }
 
 /* ------------- CSS FOR THE ENTIRE APP ------------------------------------------------------------------- */
+/* ------------- CSS FOR THE ENTIRE APP ------------------------------------------------------------------- */
+/* ------------- CSS FOR THE ENTIRE APP ------------------------------------------------------------------- */
+/* ------------- CSS FOR THE ENTIRE APP ------------------------------------------------------------------- */
+/* ------------- CSS FOR THE ENTIRE APP ------------------------------------------------------------------- */
+
 .upload-btn-wrapper {
   position: relative;
   overflow: hidden;
   display: inline-block;
 }
-
 
 .upload-btn-wrapper input[type=file] {
   font-size: 10px;
@@ -590,14 +566,6 @@ video {
   opacity: 0;
   cursor: pointer;
 }
-
-/* input::file-selector-button {
-  font-weight: bold;
-  color: dodgerblue;
-  padding: 0.5em;
-  border: thin solid grey;
-  border-radius: 3px;
-} */
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -619,22 +587,21 @@ video {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #0a6283;
+  background: darkslateblue;
   box-shadow: 0px 0px 4px #FFFFFF; 
   border-radius: 10px;
 }
 
- .App {
+.App {
   min-height: 100vh;
+  font-family: 'Chakra Petch','Inter', sans-serif;
   color: white;
-  background: hsla(213, 77%, 14%, 1);
-  background: linear-gradient(180deg, hsla(213, 77%, 14%, 1) 0%, hsla(202, 27%, 45%, 1) 100%);
-  background: -moz-linear-gradient(180deg, hsla(213, 77%, 14%, 1) 0%, hsla(202, 27%, 45%, 1) 100%);
-  background: -webkit-linear-gradient(180deg, hsla(213, 77%, 14%, 1) 0%, hsla(202, 27%, 45%, 1) 100%);
+  background: #242527;
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#08203E", endColorstr="#557C93", GradientType=1 );
   background-size: cover;
   background-position: center;
   overflow: hidden;
+
 } 
 
 .input-decor{
@@ -651,20 +618,6 @@ video {
   gap:2px;
 }
 
-.domine-regular {
-  font-family: "Domine", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 30px;
-}
-
-.josefin-sans-regular {
-  font-family: "Josefin Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
 .centre{
   width: 100%;
   text-align: center;
@@ -672,48 +625,40 @@ video {
 
 .file-download{
   border-radius: 10px;
-  background-color: #6999e2;
+  background-color: #324869;
   color: white;
   padding: 5px;
 }
-/* ------------- CSS FOR THE LOGIN AND SIGN UP COMPONENTS ------------------------------------------------ */
-.login-bar{
-  display: flex;
-  color: white;
-  flex-direction: row;
-  padding: 0 50px;
-  width: 100%;
-  justify-content:space-between;
+
+h1{
+  font-size: 30px;
   
 }
-
-.login-bar-items{
+/* ------------- CSS FOR THE LOGIN AND SIGN UP COMPONENTS ------------------------------------------------ */
+.auth-page{
+  height: 100vh;
   display: flex;
-  color: white;
   flex-direction: row;
-  row-gap: 5px;
-  width: 30%;
-  justify-content: space-between;
-  cursor: pointer;
-  text-shadow: 0px 0px 4px #FFFFFF;
+  align-items: center;
+
 }
 
-.login-box{
+.login {
   display: flex;
   flex-direction: column;
-  width: 340px;
+  width: 50vw;
+  height: 100%;
   gap:5px;
-  padding:5px;
+  padding:5em;
+  text-align: center;
+}
+
+.login-right{
+  background-color:rgba(0, 0, 0, 0.315);
+  text-align: left;
 }
 
 /* ------------- CSS FOR THE HOME PAGE ------------------------------------------------------------------- */
-
-.login-box{
-  padding: 5px;
-  background-color:cadetblue;
-  border-radius: 10px;
-  margin: 15% auto;
-}
 
 .login-signup-btns{
   width: 100%;
@@ -723,9 +668,9 @@ video {
 
 .primary-btn{
   padding:2px;
-  background-color:#0f8fbe;
+  background-color:burlywood;
   margin: 2px 0px;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 6px;
   text-align: center;
 }
@@ -735,9 +680,6 @@ video {
   transition-duration: 300ms;
 }
 
-.primary-btn:focus{
-  border:1px white solid;
-}
 
 .password{
   display: flex;
@@ -747,13 +689,6 @@ video {
 }
 
 /* ------------- CSS FOR THE CHATS PAGE ------------------------------------------------------------------- */
-
-.messages{
-  border-radius:20px;
-  color:black;
-  padding : 5px 15px; 
-}
-
 
 
 .chat-page{
@@ -765,17 +700,18 @@ video {
   display:flex;
 }
 
-/* ------------- CSS FOR THE MYCHATS COMPONENT ------------------------------------------------------------------- */
-#my-chats-component{
+/* ------------- CSS FOR THE SIDEBAR ------------------------------------------------------------------- */
+#sidebar{
   display: flex;
   flex-direction: column;
-  background-color: #051937;
+  background-color: #000000;
   width: 20vw;
   height: 100vh;
   overflow-y:hidden;
   overflow-x: hidden;
   text-shadow: 0px 0px 2px #FFFFFF;
   border-radius: 0px 0px 5px 0px;
+  border: solid 1px #f1f1f15e;
 }
 
 .all-chats{
@@ -785,6 +721,7 @@ video {
   gap: 5px;
   overflow-y:auto;
   padding: 5px;
+  
 }
 
 .all-chats-item{
@@ -797,7 +734,7 @@ video {
 
 .all-chats-item:hover{
   cursor: pointer;
-  background-color: #092856;
+  background-color:rgb(43, 32, 117);
 }
 
 .all-chats-item:active{
@@ -805,31 +742,49 @@ video {
 }
 
 .profile-section{
-  background-color: #092856;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 5px;
   justify-content: space-between;
   width: inherit;
-  
+  height: 50px;
+}
+
+.profile-section:first-child{
+  border: solid 0.5px #f1f1f15e;
 }
 /* ------------- CSS FOR THE SINGLE CHAT COMPONENT ------------------------------------------------------------------- */
 #single-chat{
   display: flex;
   flex-direction: column; 
-
-  background-color: #092856;
+  background-color: #242527;
   height: 100vh;
   width: 80vw;
-  padding: 5px;
-  position: fixed;
+  border: solid 0.5px #f1f1f15e;
 }
 
-.single-chat-feed{
-  overflow-y:auto;
-  width: 75vw;
-  height: 85vh;
+#chat{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  border: solid 0.5px #f1f1f15e;
+}
+
+.chat-name{
+  border: solid 0.5px #f1f1f15e;
+  height: 50px;
+  padding: 5px;
+
+}
+
+.messages{
+  border-radius:10px;
+  color:black;
+  padding : 5px 15px; 
 }
 
 .message{
@@ -844,6 +799,7 @@ video {
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 5px;
 }
 /* ------------------------------------ FOR WHEN WE ENTER TEXT IS SEARCH BOX AND CSS FOR EACH SEARCH RESULT ITEM - UserListitem.cs ---------------------------------- */
 .user-search-results{
@@ -865,7 +821,7 @@ video {
 }
 
 .user-search-result-item:hover{
-  background-color: #00bf72;
+  background-color: darkslateblue;
   color: white;
   cursor: pointer;
 }
@@ -886,13 +842,11 @@ video {
   position: fixed;
   left:0;
   top:0;
-  
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  
 }
 
 .gc-modal-content{
@@ -904,7 +858,7 @@ video {
   max-height: 500px;
   padding: 10px;
   gap: 2px;
-  background-color: #092856;
+  background-color: #000000;
   margin: 10% auto; /* 15% from the top and centered */
   border-radius: 10px;
   padding: 20px;
@@ -912,6 +866,9 @@ video {
   gap: 5px;
 }
 
+.my-profile{
+
+}
 .attachment{
   display: flex;
   justify-content: space-around;
@@ -930,7 +887,7 @@ video {
 }
 
 .attachment-item:hover{
-  color: #00bf72;
+  color: darkslateblue;
 }
 
 
@@ -951,15 +908,6 @@ video {
 }
 
 @media screen and (min-width: 0px) and (max-width:479px)  {
-  .domine-regular {
-    font-size: 16px;
-  }
-
-  #my-chats-component {
-    width: 35vw;
-    font-size: 16px;
-  }
-
   .all-chats-item{
     font-size: 12px;
     height: 30px;
@@ -970,12 +918,44 @@ video {
     font-size: 12px;
   }
 
+  .auth-page{
+    flex-direction: column;
+    
+  }
+
+  .login{
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+
   #profile-section {
     align-items: center;
   }
 
+  #sidebar{
+    position: fixed;
+    z-index: 1;
+    width: 50vw;
+  }
+
+  #no-sidebar{
+    background-color: #000000;
+    padding: 10px;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    height: 49px;
+    border: solid 1px #f1f1f15e;
+  }
+
   #single-chat{
-    width:65vw;
+    width:100vw;
+    height: 90vh;
+  }
+
+  .chat-name{
+    text-align: center;
   }
 
   .messages{
@@ -990,20 +970,26 @@ video {
 }
 
 @media screen and (min-width:480px) and (max-width: 900px) {
-  #my-chats-component {
+  #sidebar {
     width: 35vw;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .all-chats-item{
-    font-size: 16px;
-  }
-
-  #profile-section {
+    font-size: 14px;
   }
 
   #single-chat{
     width:65vw;
+  }
+
+  h1{
+    font-size: 20px;
+  }
+
+  .login{
+    padding: 10px;
+    padding-top: 30vh;
   }
 
 }

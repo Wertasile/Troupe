@@ -276,23 +276,40 @@ The protect middleware is also used, so only authorised users can access the rou
 │   │   ├── App.css
 
 ```
-### Config
+### CONFIGURATION FILE (ChatLogics.js)
 
-### Context
+### CONTEXT FILE (ChatProvider.js)
 
-### Pages and User Interface
+### PAGES AND USER INTERFACE
+
+#### 1) HOME PAGE
+
+#### 2) LOGON PAGE
+
+#### 3) REGISTRATION PAGE
+
+#### 4) CHAT PAGE
 
 ## WEBSOCKET IMPLEMENTATION - CONNECTION THE CLIENT AND SERVER IN REAL TIME
 
 WebSockets are used to enable real time updates within the app. This is done by enabling a persistent connection between the client and the server.
 
-All the implementation has been done in 2 files, the server files (server.js) and the Component for Chats (SingleChat.js). There are 3 instances where WebSockets have been implemented.
+All the implementation has been done in 2 files, the server files (server.js) and the Component for Chats (SingleChat.js). There are 3 instances where WebSockets have been implemented. They are explained in flowcharts below.
 
-### 1) 
+### 1) Establishing Socket Connection
 
-### 2)
+<p align="center">
+  <img src="README-images/WebSocket.jpg" alt="Web Socket Connection" style="width: 375px; border-radius:8px;"/>
+</p>
 
-### 3)
+### 2) Establishing Rooms to enable real time chatting
+
+Users who have a socket connection, when needing to chat to each other are put in the same room, which the room id as the id of the chat they are in.
+
+<p align="center">
+  <img src="README-images/MessageReceival-WebSocket (1).jpg" alt="Using Web Sockets for Real Time Updates" style="width: 375px; border-radius:8px;"/>
+</p>
+
 
 
 

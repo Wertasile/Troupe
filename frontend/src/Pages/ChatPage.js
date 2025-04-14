@@ -10,6 +10,7 @@ import { getSender, getSenderFullDetails } from "../config/ChatLogics";
 const Chatpage = () => {
   const [fetchAgain, setFetchAgain] = useState(false);
   const [modal,setModal] = useState(false);
+  const [showchats, setShowchats] = useState(true);
   const { selectedChat, setSelectedChat, user, notification, setNotification } = ChatState();
 
   return (
@@ -18,9 +19,13 @@ const Chatpage = () => {
       <div className="chat-page">
       {/* {user && <SideDrawer />} */}
 
-      <div>{user && <MyChats fetchAgain={fetchAgain} />}</div>
       <div>
+        {user && 
+          <MyChats fetchAgain={fetchAgain} />}
         
+          
+      </div>
+      <div>
         {user && (
           // <Chatbox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
           <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain}  modal={modal} setModal={setModal}/>

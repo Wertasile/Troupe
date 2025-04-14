@@ -19,7 +19,7 @@ const Homepage = () => {
             <div className='login-bar'>
                 <div className='domine-regular'>
                     {/* <img src="/images/discourse-logo.png" height="10" alt="Discourse Logo" /> */}
-                    DISCOURSE
+                    TROUPE
                 </div>
                 <div className='login-bar-items'>
                     <div>Download</div>

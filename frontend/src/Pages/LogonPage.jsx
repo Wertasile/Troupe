@@ -24,13 +24,13 @@ const LogonPage = () => {
 
   const history = useHistory()
   
-      useEffect(() => {
-          const user = JSON.parse(localStorage.getItem("userInfo"))
-  
-          if (user){
-              history.push("/chats")  // if user is already logged in, push him back to chats page
-          }
-      }, [history])
+  useEffect(() => {
+      const user = JSON.parse(localStorage.getItem("userInfo"))
+
+      if (user){
+          history.push("/chats")  // if user is already logged in, push him back to chats page
+      }
+  }, [history])
 
   const submitHandler = async () => {
     setLoading(true);

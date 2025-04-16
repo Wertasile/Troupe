@@ -16,6 +16,7 @@ const recorder = new MicRecorder({ bitRate: 128 });
 AWS.config.update({
   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
   secretAccessKey: process.env.REACT_APP_AWS_SECRET,
+
 });
 
 const REGION = "us-east-1"
@@ -160,9 +161,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
 
         // emitting the new message (data from API call)
         socket.emit("new message", data)
-
         console.log("new message", data)
-
         setMessages([...messages, data]);
         
       } catch (error) {
@@ -588,7 +587,24 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
                   
                 }
               <div className="message-input" onKeyDown={sendMessage} id="first-name" isRequired mt={3}> 
-                
+                {isRecording ? 
+                  (
+                  <div className="recording">
+                    <div>
+                    RECORDING AUDIO  <i style={{color:'red'}} class="fa-solid fa-record-vinyl vinyl"></i>
+                    </div>
+                    <div 
+                    onClick={() => 
+                      {stopRecording()
+                       setAttachment(!attachment)
+                      }} 
+                    className="attachment-item">
+                      <i class="fa-solid fa-microphone-slash"></i>
+                    </div>
+                  </div>)
+                  :
+                  (<></>)
+                }
                 <Input variant="filled"bg="#E0E0E0" placeholder="Enter a message.." value={newMessage} onChange={typingHandler}/>
                 <Tooltip label={"Add Attachment"} placement="bottom-start" hasArrow><div className="attachment-item" style={{fontSize:"30px"}} onClick={() => setAttachment(!attachment)}><i class="fa-solid fa-paperclip"></i></div></Tooltip>
                 <Tooltip label={"Add Emoji"} placement="bottom-start" hasArrow><div className="attachment-item" style={{fontSize:"30px"}} onClick={() => setAttachment(!attachment)}><i class="fa-solid fa-face-smile"></i></div></Tooltip>

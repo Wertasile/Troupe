@@ -5,6 +5,7 @@ import { ChatState } from '../Context/ChatProvider';
 import { Avatar, Tooltip } from '@chakra-ui/react';
 import AWS from 'aws-sdk';
 import S3 from 'aws-sdk/clients/s3';
+import AudioPlayer from '../animations/AudioPlayer';
 
 
 AWS.config.update({
@@ -152,7 +153,7 @@ const ScrollableChat = ({ messages }) => {
           }
 
           <span className="messages" style={{
-            backgroundColor: `${m.sender._id === user._id ? "#B3E3F8" : "#B9F5D0"}`,
+            backgroundColor: `${m.sender._id === user._id ? "#4EAAFF" : "#05EF83"}`,
             marginLeft: isSameSenderMargin(messages, m, i, user._id),
             marginTop: isSameUser(messages, m, i, user._id) ? 3 : 10
           }}>
@@ -163,6 +164,7 @@ const ScrollableChat = ({ messages }) => {
                     return <img src={imageUrls[m._id]} width="200" height="100" alt="Message content" />
                   case "audio":
                     return <audio controls src={audioUrls[m._id]} type="audio/mp3"></audio>
+                    // return <AudioPlayer src={audioUrls[m._id]}/>
                   case "file" :
                     // return <embed data={fileUrls[m._id]} type="application/pdf" width="100%" height="600px">
                     return <div className='file-download'>

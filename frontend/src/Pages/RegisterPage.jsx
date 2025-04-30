@@ -104,10 +104,10 @@ const RegisterPage = () => {
 
     <div className='auth-page'>
       <div className='login'>
-        <h1>WELCOME TO TROUPE</h1>
-        <h1>THE BEST PLACE TO <span>GAME</span></h1>
-      </div>
-      <div className='login login-right '>
+        <h1 style={{display:'flex', justifyContent:'center'}}  className='centre'>
+          <img src='/images/Troupe_Logo.png' height={'48'} width={'48'} style={{margin:'5px'}}/>
+          <span><h1>TROUPE</h1></span>
+        </h1>
         <div className='label-input-pair'>
           <div><label className='label'>Email</label></div>
           <div><input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/></div>     

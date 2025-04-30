@@ -16,7 +16,6 @@ const recorder = new MicRecorder({ bitRate: 128 });
 AWS.config.update({
   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
   secretAccessKey: process.env.REACT_APP_AWS_SECRET,
-
 });
 
 const REGION = "us-east-1"
@@ -250,6 +249,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
       console.log("Setting Audio File:", blob);
       setAudio(file); // State update
       // uploadAudioFile(file); // Use the new file immediately
+      setAttachment(!attachment)
     
       
     } catch (error) {
@@ -529,10 +529,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
           <div className="chat-name">
             {messages &&
             (!selectedChat.isGroupChat ? (
-                <div onClick={() => setModal(true)} className="domine-regular" >{getSender(user, selectedChat.users)}</div>
+                <div onClick={() => setModal(true)} className="domine-regular" ><h2>{getSender(user, selectedChat.users)}</h2></div>
 
             ) : (
-                <div onClick={() => setModal(true)} className="domine-regular"> {selectedChat.chatName.toUpperCase()}</div>
+                <div onClick={() => setModal(true)} className="domine-regular"> <h2>{selectedChat.chatName.toUpperCase()}</h2></div>
             ))}
           </div>
           <div className="chat">

@@ -14,13 +14,10 @@ const app = express()
 dotenv.config()
 connectDB()
 
-// app.get("/", (req,res) => {
-//     res.send("API is Running successfully")
-// })
 
 app.use(express.json());  // command used to accept JSON data from the front-end
 
-app.use(cors({origin: 'http://localhost:3000',
+app.use(cors({origin: 'https://troupe-nu.vercel.app/',
   credentials: true
 }));
 app.options('*', cors());
@@ -54,14 +51,13 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 
-const server = app.listen(5000, console.log(`Server started on port ${PORT}`))
+const server = app.listen(PORT, console.log(`Server started on port ${PORT}`))
 
 // http request to server to open connection
 const io = require("socket.io")(server, {
     pingTimeout: 60000,                            // waits for ms before connection is closed for inactivity
     cors : {
-        origin : "http://localhost:3000",
-        origin : ""
+        origin : "https://troupe-nu.vercel.app",
     }
 })
 

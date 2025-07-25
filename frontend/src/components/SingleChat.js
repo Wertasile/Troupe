@@ -22,7 +22,7 @@ const REGION = "us-east-1"
 
 // socket io stuff below
 // const ENDPOINT = "http://localhost:5000"
-const ENDPOINT = "https://real-time-chat-app-mern-un4z.onrender.com"
+const ENDPOINT = "troupe-production.up.railway.app"
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {

@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect } from 'react'
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
@@ -51,7 +49,7 @@ const LogonPage = () => {
     try {
       const config = { headers: { "Content-type": "application/json" } };
   
-      const { data } = await axios.post(`https://troupe-production.up.railway.app/api/user/login`, { email: emailToUse, password: passwordToUse }, config);
+      const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/user/login`, { email: emailToUse, password: passwordToUse }, config);
   
       toast({ title: "Login Successful", status: "success", duration: 5000, isClosable: true, position: "bottom" });
   

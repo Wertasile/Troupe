@@ -26,7 +26,7 @@ const MyChats = ({ fetchAgain}) => {
     try{
       const config = { headers : {Authorization: `Bearer ${user.token}`}}
 
-      const { data } = await axios.delete(`/api/chat/${chatId}`, config);
+      const { data } = await axios.delete(`https://troupe-nu.vercel.app/api/chat/${chatId}`, config);
 
       console.log(data)
       fetchChats()

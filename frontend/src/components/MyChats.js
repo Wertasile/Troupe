@@ -45,7 +45,7 @@ const MyChats = ({ fetchAgain}) => {
         },
       };
 
-      const { data } = await axios.get("/api/chat", config);
+      const { data } = await axios.get("https://troupe-nu.vercel.app/api/chat", config);
       setChats(data);
     } catch (error) {
       toast({title: "Error Occured!", description: "Failed to Load the chats", status: "error", duration: 5000, isClosable: true,position: "bottom-left",});

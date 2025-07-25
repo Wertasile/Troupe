@@ -60,7 +60,8 @@ const server = app.listen(5000, console.log(`Server started on port ${PORT}`))
 const io = require("socket.io")(server, {
     pingTimeout: 60000,                            // waits for ms before connection is closed for inactivity
     cors : {
-        origin : "http://localhost:3000"
+        origin : "http://localhost:3000",
+        origin : ""
     }
 })
 

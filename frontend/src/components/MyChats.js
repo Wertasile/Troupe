@@ -26,7 +26,7 @@ const MyChats = ({ fetchAgain}) => {
     try{
       const config = { headers : {Authorization: `Bearer ${user.token}`}}
 
-      const { data } = await axios.delete(`https://troupe-production.up.railway.app/api/chat/${chatId}`, config);
+      const { data } = await axios.delete(`${process.env.REACT_APP_SERVER}/api/chat/${chatId}`, config);
 
       console.log(data)
       fetchChats()
@@ -45,7 +45,7 @@ const MyChats = ({ fetchAgain}) => {
         },
       };
 
-      const { data } = await axios.get("https://troupe-production.up.railway.app/api/chat", config);
+      const { data } = await axios.get(`${process.env.REACT_APP_SERVER}/api/chat`, config);
       setChats(data);
     } catch (error) {
       toast({title: "Error Occured!", description: "Failed to Load the chats", status: "error", duration: 5000, isClosable: true,position: "bottom-left",});

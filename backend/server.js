@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const { chats } = require('./data/data');
 const connectDB = require('./config/db');
+const cors = require('cors');
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
@@ -19,6 +20,10 @@ connectDB()
 
 app.use(express.json());  // command used to accept JSON data from the front-end
 
+app.use(cors({origin: 'http://localhost:3000',
+  credentials: true
+}));
+app.options('*', cors());
 
 app.use("/api/user",userRoutes)
 app.use("/api/chat",chatRoutes)
@@ -26,22 +31,22 @@ app.use("/api/message",messageRoutes)
 
 
 // -------------------------------------- DEPLOYYMENT --------------------------------
-const __dirname1 = path.resolve()// signifies current working directory, path module comes from node js
+// const __dirname1 = path.resolve()// signifies current working directory, path module comes from node js
 
-if (process.env.NODE_ENV==='production'){
+// if (process.env.NODE_ENV==='production'){
 
-    app.use(express.static(path.join(__dirname1, "/frontend/build")))  //establishes path from current working directory to build folder of frontend
+//     app.use(express.static(path.join(__dirname1, "/frontend/build")))  //establishes path from current working directory to build folder of frontend
 
-    app.get("*",(req,res) => {
-        // send files to our front end when our app is successfully running, we want to run the index.html file which will be in our build folder
-        res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))           
-    })
+//     app.get("*",(req,res) => {
+//         // send files to our front end when our app is successfully running, we want to run the index.html file which will be in our build folder
+//         res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))           
+//     })
 
-}else{
-    app.get("/", (req,res) => {
-        res.send("API is Running successfully")
-    })
-}
+// }else{
+//     app.get("/", (req,res) => {
+//         res.send("API is Running successfully")
+//     })
+// }
 // -------------------------------------- DEPLOYYMENT --------------------------------
 
 app.use(notFound)

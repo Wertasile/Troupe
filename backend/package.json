@@ -1,0 +1,37 @@
+{
+  "name": "talktalk",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend"
+  },
+  "author": "Ahmed Mohamed Haniffa Arfan",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "dotenv-webpack": "^8.1.0",
+    "env-cmd": "^10.1.0",
+    "express": "^4.21.1",
+    "express-async-handler": "^1.2.0",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "mic-recorder-to-mp3": "^2.2.2",
+    "mongoose": "^8.7.2",
+    "nodemon": "^3.1.7",
+    "react-router-dom": "^7.3.0",
+    "react-scripts": "^5.0.1",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "tailwindcss": "^3.4.17"
+  }
+}

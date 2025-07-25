@@ -17,7 +17,7 @@ connectDB()
 
 app.use(express.json());  // command used to accept JSON data from the front-end
 
-app.use(cors({origin: 'https://troupe-nu.vercel.app/',
+app.use(cors({origin: 'https://troupe-nu.vercel.app',
   credentials: true
 }));
 app.options('*', cors());

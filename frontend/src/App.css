@@ -845,7 +845,7 @@ h1{
 
 /* ------------------------------------ FOR MODALS ---------------------------------- */
 .gc-modal{
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   left:0;
   top:0;
@@ -865,7 +865,9 @@ h1{
   max-height: 500px;
   padding: 10px;
   gap: 2px;
-  background-color: #000000;
+  background: linear-gradient(
+    to bottom,
+    #9e5617,#094563);
   margin: 10% auto; /* 15% from the top and centered */
   border-radius: 10px;
   padding: 20px;
@@ -901,7 +903,12 @@ h1{
 }
 
 .supporting-image-login{
-  display: 'flex'; background-color:'#FF7324'; justify-content: 'center'; align-items: 'center'; height: '100vh'; width:'stretch';
+  display: flex; 
+  background-color:#FF7324; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  flex-grow: 1;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1004,6 +1011,14 @@ h1{
   #sidebar {
     width: 35vw;
     font-size: 14px;
+  }
+
+  .auth-page{
+    justify-content: center;
+  }
+
+  .supporting-image-login{
+    display: none;
   }
 
   .all-chats-item{

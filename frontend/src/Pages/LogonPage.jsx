@@ -93,7 +93,7 @@ const LogonPage = () => {
           <Link to="/register"><button className='primary-btn'>SIGN UP</button></Link>
         </div>  
       </div>
-      <div style={{ display: 'flex', backgroundColor:'#FF7324', justifyContent: 'center', alignItems: 'center', height: '100vh', width:'stretch' }}>
+      <div className='supporting-image-login'>
         <img src='/images/troupe-login-i.png' width='800'></img>
       </div>
     </div>

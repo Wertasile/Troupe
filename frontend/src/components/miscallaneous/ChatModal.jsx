@@ -30,7 +30,7 @@ const ChatModal = () => {
                   Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.post("/api/chat",{ userId }, config)
+            const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/chat`,{ userId }, config)
 
             // appends a new chat to existing chat if the chat does not exists and is not part of data
             if (!chats.find((c) => c._id === data._id)){
@@ -59,7 +59,7 @@ const ChatModal = () => {
                 }
             }
 
-            const { data } = await axios.get(`/api/user?search=${search}`, config)
+            const { data } = await axios.get(`${process.env.REACT_APP_SERVER}/api/user?search=${search}`, config)
             //console.log(data)
             setLoading(false);
             setSearchResult(data);

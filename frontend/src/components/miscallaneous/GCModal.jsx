@@ -92,7 +92,7 @@ const GCModal = ( {setGcModal} ) => {
   return (
     <>
         <div className='gc-modal-content'>
-            <div className='domine-regular'>Create a new Group Chat</div>
+            <div className='domine-regular'>CREATE A NEW GROUP CHAT</div>
             <input className="input-decor" placeholder='enter group chat name' onChange={(e) => setGroupChatName(e.target.value)}/>
             <input className="input-decor" placeholder='enter group user name' onChange={(e) => handleSearch(e.target.value)}/>
             {/* BELOW IS SELECTED GROUP MEMBERS*/}

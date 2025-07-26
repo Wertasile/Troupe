@@ -135,7 +135,7 @@ const RegisterPage = () => {
           <div className='centre'><Link to="/">Already have an account? Click here to login!</Link></div>
         </div> 
       </div>
-      <div style={{ display: 'flex', backgroundColor:'#FF7324', justifyContent: 'center', alignItems: 'center', height: '100vh', width:'stretch' }}>
+      <div className="supporting-image-login">
         <img src='/images/troupe-login-i.png' width='700'></img>
       </div>
 

@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Doto:wght@500&family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -165,7 +165,6 @@ html,
   /* 3 */
   tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -594,24 +593,26 @@ video {
 
 .App {
   min-height: 100vh;
-  font-family: 'Open Sans','Inter', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+    to left,
+    #FF7324,#098BD3
+  );
   color: white;
-  background-image: url("./Troupe_Background.png");
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#08203E", endColorstr="#557C93", GradientType=1 );
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
   background-position: center;
   overflow: hidden;
 
 } 
 
 .input-decor{
-  border: #ffffff 0.5px solid;
+
   border-radius: 5px;
   height: 40px;
-  padding:5px;
+  padding:10px;
   width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: black;
+  border: 0.5px solid black;
 }
 
 .label-input-pair{
@@ -634,44 +635,32 @@ video {
 
 h1{
   font-size: 2rem;
-  font-weight: 600;
 }
 /* ------------- CSS FOR THE LOGIN AND SIGN UP COMPONENTS ------------------------------------------------ */
 .auth-page{
   height: 100vh;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 10vh 0px;
-
 }
 
 .login {
   display: flex;
   flex-direction: column;
-  width: 50vw;
-  height: 100%;
-  gap:35px;
-  padding:5em;
+  gap: 10px;
+  width: 500px;
+  padding:3em;
   text-align: center;
-  background-color:rgba(0, 0, 0, 0.97);
   text-align: left;
-  border-radius: 25px;
 }
 
 /* ------------- CSS FOR THE HOME PAGE ------------------------------------------------------------------- */
 
-.login-signup-btns{
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
 .primary-btn{
   padding:2px;
-  background-color:#FF7262;
-  color: black;
+  border: 1px solid orange;
+  background: linear-gradient(
+    to bottom,
+    #9e5617,#094563);
+  color: white;
   font-weight:500;
   margin: 2px 0px;
   border-radius: 10px;

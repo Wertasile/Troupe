@@ -77,32 +77,24 @@ const LogonPage = () => {
           <span><h1>TROUPE</h1></span>
         </h1>
         <h1>SIGN IN</h1>
-        <div className='label-input-pair'>
-          
-          <div><input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/></div>     
-        </div> 
-        <div>
-          
-          <div className='password'>
-            <input className="input-decor" placeholder='Enter your Password' onChange={(e) => {setPassword(e.target.value)}} type={show ? "text":"password"}/>
-            <button onClick={handleClick}>{show ? (<i className="fa-solid fa-eye-slash"></i>):(<i className="fa-solid fa-eye"></i>)}</button>
-          </div>
-            
-        </div> 
-
-        <div className='centre'>
-          
-          <div><button className='primary-btn centre' style={{width:100}} isLoading={loading} onClick={() => submitHandler()}>LOGIN</button></div>
-          <div>
-            <button className='primary-btn' 
-            onClick={GuestSubmitHandler}>
-              LOGIN AS GUEST</button>
-          </div>
-          <br></br> 
-          <div><Link to="/register"><button className='primary-btn'>SIGN UP</button></Link></div>
-        </div>  
+        <input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/> 
+        <div className='password'>
+          <input className="input-decor" placeholder='Enter your Password' onChange={(e) => {setPassword(e.target.value)}} type={show ? "text":"password"}/>
+          <button onClick={handleClick}>{show ? (<i className="fa-solid fa-eye-slash"></i>):(<i className="fa-solid fa-eye"></i>)}</button>
+        </div>
         
-          
+        
+
+
+        <div style={{display:'flex', flexDirection:'column',alignItems:'center'}}> 
+          <button className='primary-btn centre' style={{width:100}} isLoading={loading} onClick={() => submitHandler()}>LOGIN</button>
+          <button className='primary-btn' style={{width:200}} onClick={GuestSubmitHandler}>LOGIN AS GUEST</button>
+          <br></br> 
+          <Link to="/register"><button className='primary-btn'>SIGN UP</button></Link>
+        </div>  
+      </div>
+      <div style={{ display: 'flex', backgroundColor:'#FF7324', justifyContent: 'center', alignItems: 'center', height: '100vh', width:'stretch' }}>
+        <img src='/images/troupe-login-i.png' width='800'></img>
       </div>
     </div>
     

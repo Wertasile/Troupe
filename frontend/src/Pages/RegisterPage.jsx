@@ -1,7 +1,3 @@
-import { Button } from "@chakra-ui/react";
-import { FormControl, FormLabel } from "@chakra-ui/react";
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import { VStack } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -108,28 +104,28 @@ const RegisterPage = () => {
           <img src='/images/Troupe_Logo.png' height={'48'} width={'48'} style={{margin:'5px'}}/>
           <span><h1>TROUPE</h1></span>
         </h1>
-        <div className='label-input-pair'>
-          <div><label className='label'>Email</label></div>
-          <div><input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/></div>     
-        </div>
-        <div className='label-input-pair'>
-          <div><label className='label'>Username</label></div>
-          <div><input className='input-decor' placeholder='Enter your username' onChange={(e) => {setName(e.target.value)}}/></div>     
-        </div>  
-        <div>
-          <div><label className='label'>Password</label></div>
+        <p className='label-input-pair'>
+          <label className='label'>Email</label>
+          <input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/>    
+        </p>
+        <p className='label-input-pair'>
+          <label className='label'>Username</label>
+          <input className='input-decor' placeholder='Enter your username' onChange={(e) => {setName(e.target.value)}}/>   
+        </p>  
+        <p>
+          <label className='label'>Password</label>
           <div className="password">
             <input className="input-decor" placeholder='Enter your Password' onChange={(e) => {setPassword(e.target.value)}} type={show ? "text":"password"}/>
             <button onClick={handleClick}>{show ? (<i class="fa-solid fa-eye-slash"></i>):(<i class="fa-solid fa-eye"></i>)}</button>
           </div>
-        </div>
-        <div>
+        </p>
+        <p>
           <div><label className='label'>Confirm Password</label></div>
           <div className="password">
             <input className="input-decor" placeholder='Enter your Password' onChange={(e) => {setConfirmpassword(e.target.value)}} type={show ? "text":"password"}/>
             <button onClick={handleClick}>{show ? (<i class="fa-solid fa-eye-slash"></i>):(<i class="fa-solid fa-eye"></i>)}</button>
           </div>
-        </div>
+        </p>
         <div className="">
             <div>UPLOAD PICTURE</div>
             <div><input type="file" onChange={(e) => postDetails(e.target.files[0])}/></div>
@@ -138,6 +134,9 @@ const RegisterPage = () => {
           <div><button className='primary-btn centre' style={{width:100}} onClick={submitHandler}>REGISTER</button></div>
           <div className='centre'><Link to="/">Already have an account? Click here to login!</Link></div>
         </div> 
+      </div>
+      <div style={{ display: 'flex', backgroundColor:'#FF7324', justifyContent: 'center', alignItems: 'center', height: '100vh', width:'stretch' }}>
+        <img src='/images/troupe-login-i.png' width='700'></img>
       </div>
 
       {/* <FormControl id="pic">

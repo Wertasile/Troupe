@@ -41,7 +41,7 @@ const RegisterPage = () => {
       const config = {
         headers: {"Content-type": "application/json",}};
 
-      const { data } = await axios.post("/api/user", {name,email,password,pic,}, config);
+      const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/user`, {name,email,password,pic,}, config);
 
       console.log(data);
 

@@ -72,10 +72,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
 
       setLoading(true);
 
-      const { data } = await axios.get(
-        `/api/message/${selectedChat._id}`,
-        config
-      );
+      const { data } = await axios.get(`${process.env.REACT_APP_SERVER}/api/message/${selectedChat._id}`,config);
       setMessages(data);
       console.log("messages fetched")
       console.log(messages)
@@ -147,8 +144,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
           },
         };
         setNewMessage("");
-        const { data } = await axios.post(
-          "/api/message",
+        const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/message`,
           {
             content: newMessage,
             messageType: type,
@@ -315,8 +311,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
     };
     setNewMessage("");
 
-    const { data } = await axios.post(
-      "/api/message",
+    const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/message`,
       {
         content: fileName,
         messageType: "audio",
@@ -419,8 +414,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
     };
     setNewMessage("");
 
-    const { data } = await axios.post(
-      "/api/message",
+    const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/message`,
       {
         content: `${imagename}-${user._id}.${imagetype}`,
         messageType: "image",
@@ -505,8 +499,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain, modal, setModal  }) => {
     };
     setNewMessage("");
 
-    const { data } = await axios.post(
-      "/api/message",
+    const { data } = await axios.post(`${process.env.REACT_APP_SERVER}/api/message`,
       {
         content: filename,
         messageType: "file",

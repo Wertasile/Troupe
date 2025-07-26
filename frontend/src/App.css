@@ -900,6 +900,10 @@ h1{
   color:#05EF83;
 }
 
+.supporting-image-login{
+  display: 'flex'; background-color:'#FF7324'; justify-content: 'center'; align-items: 'center'; height: '100vh'; width:'stretch';
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .vinyl {
     animation: blink infinite 3s linear;
@@ -954,6 +958,10 @@ h1{
 
   #profile-section {
     align-items: center;
+  }
+
+  .supporting-image-login{
+    display: none;
   }
 
   #sidebar{

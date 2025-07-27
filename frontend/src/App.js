@@ -8,8 +8,8 @@ import RegisterPage from './Pages/RegisterPage';
 function App() {
   return (
     <div className="App">
-      <Route path="/" component={LogonPage} exact/>
-      {/* <Route path="/login" component={LogonPage} exact/> */}
+      <Route path="/" component={Homepage} exact/>
+      <Route path="/login" component={LogonPage} exact/>
       <Route path="/register" component={RegisterPage} exact/>
       <Route path="/chats" component={ChatPage}/>
     </div>

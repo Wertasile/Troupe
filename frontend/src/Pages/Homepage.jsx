@@ -1,6 +1,5 @@
-'use client'
-
 import React, { useEffect, useState} from 'react'
+import { NavLink } from 'react-router-dom/cjs/react-router-dom'
 import { useHistory, Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const Homepage = () => {
@@ -16,19 +15,29 @@ const Homepage = () => {
 
     return (
         <>
-            <div className='login-bar'>
-                <div className='domine-regular'>
-                    {/* <img src="/images/discourse-logo.png" height="10" alt="Discourse Logo" /> */}
-                    TROUPE
-                </div>
-                <div className='login-bar-items'>
-                    <div>Download</div>
-                    <div>Blog</div>
-                    <div>Developer</div>
-                    <div>Careers</div>
-                    <div><Link to="/login"><div>Login</div></Link></div>
-                </div>
-            </div>
+            <header>
+                <img src='/images/Troupe_Logo.png' height={32}/>
+                <nav>
+
+                </nav>
+                <NavLink to="/login">LOGIN</NavLink>
+            </header>
+
+            <main>
+                <section id="hero">
+
+                </section>
+                <section>
+                    
+                </section>
+                <section>
+                    
+                </section>
+            </main>
+
+            <footer>
+
+            </footer>
         </>
     )
 }

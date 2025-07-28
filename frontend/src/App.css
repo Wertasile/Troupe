@@ -4,24 +4,105 @@
 @tailwind components;
 @tailwind utilities;
 
-.upload-btn-wrapper {
-  position: relative;
+.App {
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right,#b8c4ee 70%,#F89565);
+  color: black;
+  background-position: center;
   overflow: hidden;
-  display: inline-block;
 }
 
-.upload-btn-wrapper input[type=file] {
-  font-size: 10px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  cursor: pointer;
+h1{
+  font-size: 2rem;
+  font-family: 'Arimo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px 0px;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  padding-left: 1px;
+h2{
+  font-size: 1.3rem;
+  font-family: 'Arimo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 5px 0px;
+}
+
+li{
+  list-style-type: none;
+  line-height: 2;
+}
+
+header{
+  display: flex;
+  position: sticky;
+  border: solid 0.5px white;
+  background-color: white;
+  color: black;
+  box-shadow: 1px 1px 10px 3px rgb(179, 177, 177);
+  border-radius: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 50px;
+  background-color:#1F2024;
+  color: white;
+}
+
+#footer-left{
+  display: flex;
+  max-width: 400px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#footer-right{
+  display: flex;
+  gap: 20px;
+}
+
+
+nav{
+  display: flex;
+  gap: 10px;
+}
+
+#hero{
+  background: linear-gradient(to bottom right,#b8c4ee 70%,#F89565);
+}
+
+#features{
+  background: white;
+}
+
+.banner{
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: center;
+  gap: 10px;
+  padding: 50px 0px;
+}
+
+.feature_x{
+  display: flex;
+  flex-direction: row;
+  background-color: #F4F4F4;
+  width: 80vw;
+}
+
+.feature_x_text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
 }
 
 /* Track */
@@ -44,15 +125,27 @@
   border-radius: 10px;
 }
 
-.App {
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom right,#b8c4ee 70%,#F89565);
-  color: white;
-  background-position: center;
-  overflow: hidden;
 
-} 
+::-webkit-scrollbar {
+  width: 10px;
+  padding-left: 1px;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
 
 .input-decor{
 
@@ -83,10 +176,7 @@
   padding: 5px;
 }
 
-h1{
-  font-size: 2rem;
-  font-family: 'Arimo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+
 /* ------------- CSS FOR THE LOGIN AND SIGN UP COMPONENTS ------------------------------------------------ */
 .auth-page{
   height: 100vh;
@@ -107,20 +197,18 @@ h1{
 
 .primary-btn{
   padding:2px;
-  border: 1px solid orange;
-  background: linear-gradient(
-    to bottom,
-    #9e5617,#094563);
+  background:black;
   color: white;
-  font-weight:500;
+  width: 100px;
   margin: 2px 0px;
-  border-radius: 10px;
+  border-radius: 1rem;
   padding: 6px;
   text-align: center;
 }
 
 .primary-btn:hover{
-  background-color: #ff8274;
+  background-color: rgb(178, 178, 211);
+  color: black;
 }
 
 
@@ -287,9 +375,10 @@ h1{
 /* ------------------------------------ FOR WHEN WE CLICK ON A SEARCH RESULT - UserBadgeItem.cs ---------------------------------- */
 .search-badge{
   font:bolder black 10px;
+  border: 0.5px solid black;
   padding: 5px;
   margin: 1px;
-  background-color: #008793;
+  background-color: #ffffff;
   border-radius: 10px;
   width: fit-content;
 }
@@ -316,9 +405,7 @@ h1{
   max-height: 500px;
   padding: 10px;
   gap: 2px;
-  background: linear-gradient(
-    to bottom,
-    #9e5617,#094563);
+  background: linear-gradient(to bottom right,#b8c4ee 70%,#F89565);
   margin: 10% auto; /* 15% from the top and centered */
   border-radius: 10px;
   padding: 20px;

@@ -14,7 +14,7 @@ const Chatpage = () => {
   const { selectedChat, setSelectedChat, user, notification, setNotification } = ChatState();
 
   return (
-    <div style={{background:'#242527'}}>
+    <div>
       {modal ? (<div className="gc-modal"><ProfileModal user={getSenderFullDetails(user, selectedChat.users)}/></div>) : (<div></div>)}
       <div className="chat-page">
       {/* {user && <SideDrawer />} */}

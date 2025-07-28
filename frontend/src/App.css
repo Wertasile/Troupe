@@ -280,8 +280,7 @@ nav{
   height: 100vh;
   overflow-y:hidden;
   overflow-x: hidden;
-  text-shadow: 0px 0px 2px #FFFFFF;
-  color: white;
+  text-shadow: 0px 0px 2px #000000;
   border-radius: 0px 0px 5px 0px;
   border: solid 1px #f1f1f15e;
 }
@@ -331,7 +330,6 @@ nav{
 #single-chat{
   display: flex;
   flex-direction: column; 
-  background-color: #242527;
   height: 100vh;
   width: 80vw;
   border: solid 0.5px #f1f1f15e;

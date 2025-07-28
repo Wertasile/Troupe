@@ -1,0 +1,18 @@
+[
+    {
+        "title":"What is Troupe",
+        "desc":"Troupe is a messaging platform, simple as that. Send messages, multimedia and more. Keep up with your friends and circle!"
+    },
+    {
+        "title":"Why is Troupe Free",
+        "desc":"Troupe is free because frankly, this is a personal project meant to show proficiency in certain technologies"
+    },
+    {
+        "title":"What technologies were used to build this?",
+        "desc":"MERN stack - React, Express, MongoDB and NodeJS. AWS services were used for multimedia management. "
+    },
+    {
+        "title":"Where can I find System Design details?",
+        "desc":"System Design details can be found at the GitHub repository. There are details on packages used, code implementation, Socket.io implementation and much more"
+    }
+]

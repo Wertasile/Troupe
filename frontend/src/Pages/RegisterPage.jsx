@@ -135,9 +135,9 @@ const RegisterPage = () => {
           <div className='centre'><Link to="/">Already have an account? Click here to login!</Link></div>
         </div> 
       </div>
-      <div className="supporting-image-login">
+      {/* <div className="supporting-image-login">
         <img src='/images/troupe-login-i.png' width='700'></img>
-      </div>
+      </div> */}
 
       {/* <FormControl id="pic">
         <FormLabel>Upload your Picture</FormLabel>

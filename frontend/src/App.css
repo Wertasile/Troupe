@@ -7,7 +7,7 @@
 .App {
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom right,#b8c4ee 70%,#F89565);
+  background: linear-gradient(to bottom right,rgb(255,255,255), #b8c4ee 50%,#F87544);
   color: black;
   background-position: center;
   overflow: hidden;
@@ -74,7 +74,7 @@ nav{
 }
 
 #hero{
-  background: linear-gradient(to bottom right,#b8c4ee 70%,#F89565);
+  background: linear-gradient(to bottom right,rgb(255,255,255), #b8c4ee 50%,#F87544);
 }
 
 #features{
@@ -136,6 +136,7 @@ nav{
   flex-direction: row;
   background-color: #F4F4F4;
   width: 80vw;
+  justify-content: space-between;
 }
 
 .feature_x_text{
@@ -275,12 +276,12 @@ nav{
 #sidebar{
   display: flex;
   flex-direction: column;
-  background-color: #000000;
   width: 20vw;
   height: 100vh;
   overflow-y:hidden;
   overflow-x: hidden;
   text-shadow: 0px 0px 2px #FFFFFF;
+  color: white;
   border-radius: 0px 0px 5px 0px;
   border: solid 1px #f1f1f15e;
 }

@@ -3,6 +3,7 @@ import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { useHistory, Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 // import { useNavigate } from 'react-router';
 
 const LogonPage = () => {
@@ -73,10 +74,10 @@ const LogonPage = () => {
     <div className='auth-page'>
       <div className='login'>
         <h1 style={{display:'flex', justifyContent:'center'}}  className='centre'>
-          <img src='/images/Troupe_Logo.png' height={'48'} width={'48'} style={{margin:'5px'}}/>
+          <img src='/images/Troupe_Logo.png' width={'64'} style={{margin:'5px'}}/>
           <span><h1>TROUPE</h1></span>
         </h1>
-        <h1>SIGN IN</h1>
+        <h1 style={{textAlign:'center'}}>Sign in</h1>
         <input className='input-decor' placeholder='Enter your Email' onChange={(e) => {setEmail(e.target.value)}}/> 
         <div className='password'>
           <input className="input-decor" placeholder='Enter your Password' onChange={(e) => {setPassword(e.target.value)}} type={show ? "text":"password"}/>
@@ -90,12 +91,12 @@ const LogonPage = () => {
           <button className='primary-btn centre' style={{width:100}} isLoading={loading} onClick={() => submitHandler()}>LOGIN</button>
           <button className='primary-btn' style={{width:200}} onClick={GuestSubmitHandler}>LOGIN AS GUEST</button>
           <br></br> 
-          <Link to="/register"><button className='primary-btn'>SIGN UP</button></Link>
+          <div>Dont have an account? <NavLink to="/register">SIGN UP</NavLink></div>
         </div>  
       </div>
-      <div className='supporting-image-login'>
+      {/* <div className='supporting-image-login'>
         <img src='/images/troupe-login-i.png' width='800'></img>
-      </div>
+      </div> */}
     </div>
     
   )

@@ -17,9 +17,30 @@ connectDB()
 
 app.use(express.json());  // command used to accept JSON data from the front-end
 
-app.use(cors({origin: 'https://troupe-nu.vercel.app',
-  credentials: true
+
+// app.use(cors({origin: 'https://troupe-nu.vercel.app',
+//   credentials: true
+// }));
+
+const allowedOrigins = [
+  'https://troupe-nu.vercel.app',        // production frontend
+  'http://localhost:3000',    // local React/Vite/Next dev server
+  'http://127.0.0.1:3000'     // optional: some setups use 127.0.0.1 instead of localhost
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (e.g., curl, mobile apps)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // if you're using cookies or auth headers across origins
 }));
+
 app.options('*', cors());
 
 app.use("/api/user",userRoutes)

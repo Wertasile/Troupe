@@ -46,7 +46,16 @@ const Homepage = () => {
                     <div className='banner'>
                         <h1>Welcome to THE Communication Platform to</h1>
                         <h2>CHILL</h2>
-                        <img src="images/hero-img.png" width={700}/>
+                        
+                        <video style={{border:"1px solid whitesmoke", borderRadius:'0.5rem'}}
+                        width="700" 
+                        autoPlay 
+                        muted 
+                        loop 
+                        playsInline
+                        >
+                            <source src="/videos/Troupe-hero.mp4" type="video/mp4" />
+                        </video>
                     </div>
                     
                 </section>

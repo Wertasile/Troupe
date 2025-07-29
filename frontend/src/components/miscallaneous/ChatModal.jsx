@@ -8,7 +8,7 @@ import UserListItem from '../userAvatar/UserListItem'
 
 
 
-const ChatModal = () => {
+const ChatModal = ({setModal}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     
     const [groupChatName, setGroupChatName] = useState()
@@ -21,6 +21,9 @@ const ChatModal = () => {
     const { user, setSelectedChat, chats, setChats, notification, setNotification } = ChatState()
     const toast = useToast()
 
+    const closeModal = () => {
+        setModal(false)
+    }
     const accessChat = async (userId) => {
         try {
             setLoadingChat(true)
@@ -72,7 +75,8 @@ const ChatModal = () => {
   return (
     <>
         <div className='gc-modal-content'>
-            <div className='domine-regular'>Who would you like to talk to?</div>
+            <div style={{alignSelf:'end'}} onClick={closeModal}><i style={{fontSize:'24px'}} class="fa-solid fa-circle-xmark"></i></div>
+            <h2>Who would you like to talk to?</h2>
             <input className="input-decor" placeholder='enter user to start chat with' onChange={(e) => handleSearch(e.target.value)}/>
 
             {/* BELOW IS USER SEARCH SUGGESTION FOR GROUP MEMBERS*/}

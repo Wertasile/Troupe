@@ -9,7 +9,7 @@ import ChatLoading from '../ChatLoading'
 
 
 
-const GCModal = ( {setGcModal} ) => {
+const GCModal = ( {setModal} ) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     
     const [groupChatName, setGroupChatName] = useState()
@@ -20,6 +20,9 @@ const GCModal = ( {setGcModal} ) => {
 
     const toast = useToast()
 
+    const closeModal = () => {
+        setModal(false)
+    }
     const handleGroup = (userToAdd) => {
         if (selectedUsers.includes(userToAdd)){
             toast({title: "User already selected",status: "warning",duration: 5000,isClosable: true,position: "top-left",});
@@ -92,7 +95,8 @@ const GCModal = ( {setGcModal} ) => {
   return (
     <>
         <div className='gc-modal-content'>
-            <div className='domine-regular'>CREATE A NEW GROUP CHAT</div>
+            <div style={{alignSelf:'end'}} onClick={closeModal}><i style={{fontSize:'30px'}} class="fa-solid fa-circle-xmark"></i></div>
+            <h2>Create a new Group Chat</h2>
             <input className="input-decor" placeholder='enter group chat name' onChange={(e) => setGroupChatName(e.target.value)}/>
             <input className="input-decor" placeholder='enter group user name' onChange={(e) => handleSearch(e.target.value)}/>
             {/* BELOW IS SELECTED GROUP MEMBERS*/}
@@ -101,7 +105,7 @@ const GCModal = ( {setGcModal} ) => {
                     <UserBadgeItem key={u._id} user={u} handleFunction={() => handleDelete(u)} />
                 ))}
             </div>
-            <button type="button" className="primary-btn" onClick={() => {handleSubmit(); setGcModal(false);}}>CREATE</button>
+            <button type="button" className="primary-btn" onClick={() => {handleSubmit(); setModal(false);}}>CREATE</button>
 
             {/* BELOW IS USER SEARCH SUGGESTION FOR GROUP MEMBERS*/}
         

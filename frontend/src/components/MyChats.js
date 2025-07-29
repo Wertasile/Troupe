@@ -74,7 +74,7 @@ const MyChats = ({ fetchAgain}) => {
       {gcModal ? (
         <div className="gc-modal">
 
-        <GCModal setGcModal={setGcModal}/>
+        <GCModal setModal={setGcModal}/>
       
         </div>
       ) : (<div></div>)}
@@ -82,7 +82,7 @@ const MyChats = ({ fetchAgain}) => {
       {scModal ? (
         <div className="gc-modal">
 
-        <ChatModal/>
+        <ChatModal setModal={setScModal}/>
       
         </div>
       ) : (<div></div>)}
@@ -90,7 +90,7 @@ const MyChats = ({ fetchAgain}) => {
       {profileModal ? (
         <div className="gc-modal">
 
-        <ProfileModal user={user}/>
+        <ProfileModal setModal={setProfileModal} user={user}/>
       
         </div>
       ) : (<div></div>)}

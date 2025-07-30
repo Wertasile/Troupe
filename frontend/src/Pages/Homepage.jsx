@@ -44,8 +44,19 @@ const Homepage = () => {
 
                 <section id="hero">
                     <div className='banner'>
-                        <h1>Welcome to THE Communication Platform to</h1>
-                        <h2>CHILL</h2>
+                        
+                        <div className='text-changer'>
+                            <p className="intro-text">
+                                <h1>Welcome to THE Communication Platform to</h1>
+                            </p>
+                            <div class="roles-container">
+                                <h1 class="role">CHILL</h1>
+                                <h1 class="role">SOCIALISE</h1>
+                                <h1 class="role">FILE-SHARE</h1>
+                                <h1 class="role">GAME</h1>
+                            </div>
+
+                        </div>
                         
                         <video style={{border:"1px solid whitesmoke", borderRadius:'0.5rem'}}
                         width="700" 

@@ -25,6 +25,7 @@ h2{
   margin: 5px 0px;
 }
 
+
 li{
   list-style-type: none;
   line-height: 2;
@@ -41,7 +42,6 @@ header{
   max-width: 900px;
   margin: 0 auto;
   margin-top: 20px;
-  margin-bottom: 50px;
   padding: 10px;
   justify-content: space-between;
   align-items: center;
@@ -219,6 +219,48 @@ nav{
   padding: 5px;
 }
 
+/* CSS FOR ROTATING TEXT */
+
+
+.roles-container{
+  overflow: hidden;
+  height: 55px;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.role{
+  display: block;
+  color: #324869;
+  animation: role-change 6s infinite;
+  font-weight: bold;
+}
+
+@keyframes role-change{
+  0% {
+    transform: translateY(0%);
+  }
+  15% {
+    transform: translateY(-150%);
+  }
+  30% {
+    transform: translateY(-300%);
+  }
+  45% {
+    transform: translateY(-450%);
+  }
+  60% {
+    transform: translateY(-300%);
+  }
+  75% {
+    transform: translateY(-150%);
+  }
+  90% {
+    transform: translateY(0%);
+  }
+}
+
 
 /* ------------- CSS FOR THE LOGIN AND SIGN UP COMPONENTS ------------------------------------------------ */
 .auth-page{
@@ -383,7 +425,7 @@ nav{
   font-size: 24px;
   padding: 10px;
   height: 55px;
-  background-color: #242527;
+  background-color: white;
 }
 /* ------------------------------------ FOR WHEN WE ENTER TEXT IS SEARCH BOX AND CSS FOR EACH SEARCH RESULT ITEM - UserListitem.cs ---------------------------------- */
 .user-search-results{

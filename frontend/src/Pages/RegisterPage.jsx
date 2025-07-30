@@ -101,7 +101,7 @@ const RegisterPage = () => {
     <div className='auth-page'>
       <div className='login'>
         <h1 style={{display:'flex', justifyContent:'center'}}  className='centre'>
-          <img src='/images/Troupe_Logo.png' height={'48'} width={'48'} style={{margin:'5px'}}/>
+          <img src='/images/Troupe_Logo.png' width={'64'} style={{margin:'5px'}}/>
           <span><h1>TROUPE</h1></span>
         </h1>
         <p className='label-input-pair'>

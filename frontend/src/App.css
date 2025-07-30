@@ -219,6 +219,12 @@ nav{
   padding: 5px;
 }
 
+.landing-img{
+  max-width: 700px;
+  height: auto;
+  object-fit: cover;
+}
+
 /* CSS FOR ROTATING TEXT */
 
 
@@ -266,6 +272,7 @@ nav{
 .auth-page{
   height: 100vh;
   display: flex;
+  justify-content: center;
 }
 
 .login {
@@ -581,7 +588,7 @@ nav{
 
   .auth-page{
     flex-direction: column;
-    
+    justify-content: center;
   }
 
   .login{
@@ -645,8 +652,24 @@ nav{
     font-size: 14px;
   }
 
+  header{font-size: 14px; gap: 2px; margin: 0 0; border-radius: 0; padding: 5px;}
+
   h1{font-size: 24px;}
   h2{font-size: 18px;}
+
+  #FAQs{padding: 10px;}
+
+  .card{
+    width:90vw;
+  }
+  .feature_x{flex-direction: column;}
+
+  .feature_x_text{padding:10px;}
+
+  .landing-img{
+    object-fit: contain;
+    min-width: 80vw;
+  }
 
 }
 
@@ -691,6 +714,18 @@ nav{
     align-items: center;
   }
 
+  .landing-img{
+    width: 350px;
+  }
+
+  .feature_x_text{padding: 7px; flex-grow: 1;}
+
+}
+
+@media screen and (min-width:901px) and (max-width: 1200px) {
+  .landing-img{
+    width: 500px;
+  }
 }
 
 /* ----------------------------------- AUDIO CONTROLS --------------------------------- */

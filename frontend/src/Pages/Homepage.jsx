@@ -77,7 +77,7 @@ const Homepage = () => {
                         <h2>Various ways to express yourself</h2>
 
                         <div className='feature_x'>
-                            <img src="images/hero-img.png" width={500} style={{borderRadius:'8px'}}/>
+                            <img src="images/troupe-feature-1.png" className="landing-img" style={{borderRadius:'8px'}}/>
                             <div className='feature_x_text'>
                                 <h2>Chat with your mates, or your squad</h2>
                                 <p>
@@ -93,17 +93,17 @@ const Homepage = () => {
                                     Hey, sometimes tacking away on the keyboard can be such a pain... Fret not, multimedia is a thing here so communicate via audio or images.
                                 </p>
                             </div>
-                            <img src="images/hero-img.png" width={500} style={{borderRadius:'8px'}}/>
+                            <img src="images/troupe-feature-2.png" className="landing-img" style={{borderRadius:'8px'}}/>
                         </div>
 
                         <div className='feature_x'>
+                            <img src="images/troupe-feature-3.png" className="landing-img" style={{borderRadius:'8px'}}/>
                             <div className='feature_x_text'>
                                 <h2>Gotta get serious sometimes eh?</h2>
                                 <p>
                                     Like we said, MULTIMEDIA. Send files, of ANY form. Gotta a spreadsheet for that, send that pronto and you good.
                                 </p>
                             </div>
-                            <img src="images/hero-img.png" width={500} style={{borderRadius:'8px'}}/>
                         </div>
 
                     </div>

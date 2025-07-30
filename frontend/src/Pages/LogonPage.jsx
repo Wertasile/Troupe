@@ -94,9 +94,6 @@ const LogonPage = () => {
           <div>Dont have an account? <NavLink to="/register">SIGN UP</NavLink></div>
         </div>  
       </div>
-      {/* <div className='supporting-image-login'>
-        <img src='/images/troupe-login-i.png' width='800'></img>
-      </div> */}
     </div>
     
   )

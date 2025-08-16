@@ -2,7 +2,7 @@
 
 Please visit this Link, Its the App! 
 
-https://real-time-chat-app-mern-un4z.onrender.com/ 
+https://troupe-nu.vercel.app/
 
 
 ## INTRODUCTION
